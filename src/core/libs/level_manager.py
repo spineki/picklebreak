@@ -1,5 +1,10 @@
+"""
+    Library used to manage levels.
+"""
+
 import importlib
 import json
+import os
 
 LEVELS_FILE = "src/res/levels/levels.json"
 
@@ -37,23 +42,30 @@ class Level ():
             self.hints.append(e)
 
 def load_level (level):
+    """
+        Load a level from its name.
+    """
+
     with open(LEVELS_FILE, 'r') as f:
         dic = json.load(f)
     return Level(dic[level])
 
 def write_level (level = None, backend_file = None):
+    """
+        Write a new level to the json. Creates an empty one if no args are passed
+    """
+
     with open(LEVELS_FILE, 'r') as f:
         dic = json.load(f)
 
     if level == None: # Create a new level if level == None
 
-        L = list(dic.keys())
-        for i in range(len(L)):
-            L[i] = int(L[i])
-        maximum = max(L) # Search for maximum to create a new level
+        new_name = "new_0"
+        while new_name in dic:
+            new_name = "new_" + str(int(new_name[4:]) + 1)
 
-        dic[str(maximum + 1)] = {
-            "id": maximum + 1,
+        dic[new_name] = {
+            "id": new_name,
             "next": "",
             "backend": "",
             "hints": []
@@ -72,14 +84,21 @@ def write_level (level = None, backend_file = None):
             ]
         }
     
-    with open(LEVELS_FILE, 'r') as f:
+    with open(LEVELS_FILE, 'w') as f:
         json.dump(dic, f, indent=4)
 
 def del_level (level):
+    """
+        Deletes a level from its object or name.
+    """
+
     with open(LEVELS_FILE, "r") as f:
         dic = json.load(f)
 
-    del dic[level.name]
+    if isinstance(level, Level):
+        del dic[level.name]
+    else:
+        del dic[level]
 
-    with open(LEVELS_FILE, 'r') as f:
+    with open(LEVELS_FILE, 'w') as f:
         json.dump(dic, f, indent=4)

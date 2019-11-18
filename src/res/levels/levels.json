@@ -1,0 +1,11 @@
+{
+    "default": {
+        "id": "default",
+        "next": "default",
+        "backend": "default",
+        "hints": [{
+            "type": "text",
+            "data": "WOW!!! The key is {}"
+        }]
+    }
+}
