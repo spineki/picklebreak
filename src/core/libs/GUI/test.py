@@ -6,7 +6,7 @@ class Application(tk.Frame):
         super().__init__(master)
         self.master = master
         self.master.title("Pickle Break")
-        self.create_widgets(n)
+        self.create_widgets()
 
 
     def create_widgets(self):
@@ -48,4 +48,6 @@ def Pickle_graphical_grid_init():
     #app.change_values([[0,1],[1,0]], 2)
     app.mainloop()
 
-Pickle_graphical_grid_init()
+if __name__ == '__main__':
+
+    Pickle_graphical_grid_init()
