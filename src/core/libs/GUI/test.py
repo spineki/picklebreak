@@ -6,7 +6,7 @@ class Application(tk.Frame):
         super().__init__(master)
         self.master = master
         self.master.title("Pickle Break")
-        self.create_widgets(n)
+        self.create_widgets()
 
 
     def create_widgets(self):
