@@ -11,31 +11,26 @@ class Core:
 
     def run_user_code(self):
         #user_code = self.window.get_code()
-
+        error = "No error"
+        user_code = "print('banane');x=0/0"
         # create file-like string to capture output
         codeOut = StringIO()
-        codeErr = StringIO()
-
         # capture output and errors
         sys.stdout = codeOut
-        sys.stderr = codeErr
-        user_code = "print('banane')"
 
-        exec(user_code)
+        try:
+            exec(user_code)
 
-        sys.stdout = sys.__stdout__
-        sys.stderr = sys.__stderr__
+        except Exception as e:
+            error = str(e)
 
-        code_error = codeErr.getvalue()
+        finally:
+            sys.stdout = sys.__stdout__
+            code_out = codeOut.getvalue()
+            print("out: " + code_out)
+            print("error: " + error)
+            codeOut.close()
 
-        print("error: " + code_error)
-
-        code_out = codeOut.getvalue()
-
-        print("out: " + code_out)
-
-        codeOut.close()
-        codeErr.close()
 
 if __name__ == '__main__':
     core = Core()
