@@ -26,7 +26,8 @@ class Core:
         # here, launch user code
         code_bool, code_error, code_out = self.run_user_code(user_code)
         if code_out.strip() == "pickle":
-            code_out += "\n Noice \n \n ********* \n "
+            code_out += "\n Noice \n "
+        code_out += "\n ********* \n "
         return code_bool, code_error, code_out
 
     def run_user_code(self, user_code):
@@ -52,7 +53,7 @@ class Core:
 
 
         except Exception as e:
-            error = str(e)
+            code_error = str(e)
             code_bool = False
 
         finally:
