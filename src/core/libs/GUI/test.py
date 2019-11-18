@@ -43,7 +43,14 @@ class Application(tk.Frame):
         #self.game_frame_input.pack(side="right")
         #self.game_frame_output.pack(side="bottom")
 
-
+    def get_input(self):
+        return self.input_test.get("1.0","end")
+    
+    def display_output(self, string):
+        self.output_text.insert("end", string)
+    
+    def display_int(self, list):
+        pass
 
     def exec_fct(self):
         self.output_text.insert("end", self.input_test.get("1.0","end"))
