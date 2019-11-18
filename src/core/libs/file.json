@@ -1,4 +1,12 @@
-{
-    "indice": "Bonjour joueur ! \n \nEssayez donc d'imprimer Hello World ! ",
-    "bloc_note": "#Ecrivez print(\"Hello world\")"
+{ 
+  "1":{
+    "id":,
+    "clue": {},
+    "imports":[],
+  },
+
+  "2":{
+
   }
+
+}
