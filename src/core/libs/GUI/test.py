@@ -2,12 +2,13 @@ import tkinter as tk
 from PIL import Image, ImageTk
 
 class Application(tk.Frame):
-    def __init__(self, master=None):
+    def __init__(self, f, master=None):
 
         super().__init__(master)
         self.master = master
         self.master.title("Pickle Break")
         self.create_widgets()
+        self.f = f
 
 
     def create_widgets(self):
@@ -93,17 +94,19 @@ class Application(tk.Frame):
         Fonction qui s'éxécute quand le joueur clique sur le bouton execute
         """
         self.output_text.config(state="normal")#débloque la zone de sortie pour pouvoir afficher
+        code_bool, code_error, code_out = self.f(self.input_test.get("1.0","end"))
+        display = "error: "+ code_error + "\n " + "out:\n" + code_out
 
-        self.output_text.insert("end", self.input_test.get("1.0","end"))#exemple, à modifier
+        self.output_text.insert("end", display)#exemple, à modifier
 
         self.output_text.config(state="disabled")#rebloque la zonne de sortie pour ne pas que le joueur puisse écrire dans la sortie
 
 
 
-def Pickle_graphical_grid_init():
+def Pickle_graphical_grid_init(f):
     root = tk.Tk()
     root.geometry("800x800")
-    app = Application(master=root)
+    app = Application(f, master=root)
     #app.change_values([[0,1],[1,0]], 2)
     app.mainloop()
 
