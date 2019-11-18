@@ -1,6 +1,6 @@
 import json
 file = "level.json"
-level = "1"
+
 
 def json_reader(file,level):
     fichier = open(file,'r')
@@ -15,12 +15,17 @@ def json_writer(file,clue=None,level=None,imports=[]):
         L = list(dic.keys())
         for i in range(len(L)):
             L[i] = int(L[i])
+        print(L)
         maximum = max(L) #Search for maximum to create a new level
-        dic[str(maximum)]={"id":str(maximum),"clue":clue,"imports":imports}
+        print(maximum)
+        dic[str(maximum+1)]={"id":str(maximum+1),"clue":clue,"imports":imports}
     else:
         dic[str(level)]={"id":str(level),"clue":clue,"imports":imports}
-    json.dump(file,dic)
-        
+    json.dump(dic,fichier,indent=4)
 
-
-json_writer(file,clue="new clue")
+def json_del_level(file,level):
+    fichier = open(file,'r')
+    dic = json.load(fichier)
+    fichier = open(file,'w')
+    del dic[str(level)]
+    json.dump(dic,fichier,indent=4)

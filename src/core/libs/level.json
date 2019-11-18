@@ -1,0 +1,15 @@
+{
+    "1": {
+        "id": "1",
+        "clue": {
+            "type": "str",
+            "information": "This is a str clue."
+        },
+        "imports": []
+    },
+    "2": {
+        "id": "2",
+        "clue": "new clue",
+        "imports": []
+    }
+}
