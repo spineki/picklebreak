@@ -15,7 +15,8 @@ class Level ():
         {
             "id"        : <level name>,
             "next"      : <next level name>,
-            "backend"   : <backend script file>
+            "backend"   : <backend script file>,
+            "imports"   : [<valid module name>, ...],
             "hints"     : [{
                 "type"  : <data type>
                 "data"  : <file path>/<text>
@@ -31,6 +32,7 @@ class Level ():
     def __init__ (self, json_data):
         self.name = json_data["id"]
         self.next = json_data["next"]
+        self.imports = json_data["imports"]
 
         backend_import = importlib.import_module("src.res.levels." + json_data["backend"])
         self.gen = backend_import.gen
@@ -68,6 +70,7 @@ def write_level (level = None, backend_file = None):
             "id": new_name,
             "next": "",
             "backend": "",
+            "imports": [],
             "hints": []
         }
 
@@ -76,6 +79,7 @@ def write_level (level = None, backend_file = None):
             "id": level.name,
             "next": level.next,
             "backend": backend_file,
+            "imports": level.imports,
             "hints": [
                 {
                     "type": h[0],

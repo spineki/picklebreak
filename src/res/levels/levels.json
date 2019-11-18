@@ -3,6 +3,7 @@
         "id": "default",
         "next": "default",
         "backend": "default",
+        "imports": [],
         "hints": [{
             "type": "text",
             "data": "WOW!!! The key is {}"
