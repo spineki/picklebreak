@@ -6,10 +6,10 @@
 import re
 
 # RegExes used for spliting and finding
-IMPORT_REGEXP = r"(from[ \t]*[A-Za-z0-9._]+[ \t]*import[ \t]*[A-Za-z0-9._]+)|(import[ \t]*[A-Za-z0-9._]+)[\n; ]"
-IMPORT_REP = r"import[ \t]*"
-FROM_REP = r"from[ \t]*"
-FROM_SPLIT = r"[ \t]*import[ \t]*"
+IMPORT_REGEXP = r"(from[ \t]+[A-Za-z0-9._]+[ \t]+import[ \t]+[A-Za-z0-9._]+)|(import[ \t]+[A-Za-z0-9._]+)[\n; ]"
+IMPORT_REP = r"import[ \t]+"
+FROM_REP = r"from[ \t]+"
+FROM_SPLIT = r"[ \t]+import[ \t]+"
 
 def get_import_list (script):
     """
@@ -43,7 +43,7 @@ def get_extended_import_list (script):
 
 def has_valid_imports (script, import_list):
     """
-        Checks if the script has a valid import list.
+        Checks if the script has a valid import list. If not, returns the invalid module.
     """
 
     script_imports = get_extended_import_list(script)
@@ -51,6 +51,6 @@ def has_valid_imports (script, import_list):
 
     for imp in script_imports:
         ret = True in [ext in import_list for ext in imp]
-        if ret: break
+        if not ret: return ret, imp[-1]
     
     return ret
