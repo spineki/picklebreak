@@ -9,8 +9,27 @@ class Core:
         # self.window = Application()
         self.level_loader = LevelLoader()
 
-    def run_user_code(self):
+    def handle_user_code(self):
         """
+        A function that handle user code:
+        First, verifies imports statements, then executes code, finally returns out and errors
+        ARGS:
+            None
+        RETURN:
+            pour le moment, wip
+        """
+
+        user_code = "print('banane');x=0/0" # normally, caught from the gui
+
+        # here, Yohan verification.
+        #
+        # here, launch user code
+        user_code_result = self.run_user_code(user_code)
+        return user_code_result
+
+    def run_user_code(self, user_code):
+        """
+        run user code and catch errors
         ARGS:
             None
         RETURN:
@@ -18,15 +37,16 @@ class Core:
         """
         #user_code = self.window.get_code()
         error = "No error"
-        user_code = "print('banane')"
         # create file-like string to capture output
         codeOut = StringIO()
+
         # capture output and errors
         sys.stdout = codeOut
 
         try:
             exec(user_code)
             return True
+
         except Exception as e:
             error = str(e)
             return False
@@ -34,11 +54,11 @@ class Core:
         finally:
             sys.stdout = sys.__stdout__
             code_out = codeOut.getvalue()
-            print("out: " + code_out)
-            print("error: " + error)
+            print("Out: " + code_out)
+            print("Error: " + error)
             codeOut.close()
 
 
 if __name__ == '__main__':
     core = Core()
-    print(core.run_user_code())
+    print(core.handle_user_code())
