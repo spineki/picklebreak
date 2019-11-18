@@ -1,3 +1,4 @@
+
 import json
 file = "level.json"
 
@@ -29,3 +30,4 @@ def json_del_level(file,level):
     fichier = open(file,'w')
     del dic[str(level)]
     json.dump(dic,fichier,indent=4)
+
