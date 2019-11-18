@@ -10,9 +10,15 @@ class Core:
         self.level_loader = LevelLoader()
 
     def run_user_code(self):
+        """
+        ARGS:
+            None
+        RETURN:
+            TRUE if the code was successfully executed, else False
+        """
         #user_code = self.window.get_code()
         error = "No error"
-        user_code = "print('banane');x=0/0"
+        user_code = "print('banane')"
         # create file-like string to capture output
         codeOut = StringIO()
         # capture output and errors
@@ -20,9 +26,10 @@ class Core:
 
         try:
             exec(user_code)
-
+            return True
         except Exception as e:
             error = str(e)
+            return False
 
         finally:
             sys.stdout = sys.__stdout__
@@ -34,4 +41,4 @@ class Core:
 
 if __name__ == '__main__':
     core = Core()
-    core.run_user_code()
+    print(core.run_user_code())
