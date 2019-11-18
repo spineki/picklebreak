@@ -48,4 +48,6 @@ def Pickle_graphical_grid_init():
     #app.change_values([[0,1],[1,0]], 2)
     app.mainloop()
 
-Pickle_graphical_grid_init()
+if __name__ == '__main__':
+
+    Pickle_graphical_grid_init()
