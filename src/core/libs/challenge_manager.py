@@ -16,6 +16,10 @@ class Challenge ():
 
         self.win_frame.create()
     
+    def setter (self):
+        # Setter / level init
+        pass
+    
     def reset (self):
         """
             Reset function called on first load, refresh and pre-code execution.
