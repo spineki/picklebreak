@@ -12,80 +12,86 @@ IMPORT_REP = r"import[ \t]+"
 FROM_REP = r"from[ \t]+"
 FROM_SPLIT = r"[ \t]+import[ \t]+"
 
-def get_import_list (script):
-    """
-        Retrieve basic import list of the user's script.
-        "import X" is translated to X.
-        "from X import Y" is translated to X.Y.
-    """
+class Executer ():
 
-    matches = re.findall(IMPORT_REGEXP, script)
-    imports = [e[1] for e in matches if e[1] != ""]
-    froms = [e[0] for e in matches if e[0] != ""]
+    def __init__ (self):
+        pass
 
-    imports = [re.sub(IMPORT_REP, "", e) for e in imports]
-    froms = [re.sub(FROM_REP, "", e) for e in froms]
-    froms = [re.sub(FROM_SPLIT, ".", e) for e in froms]
+    def set_script (self, script):
+        self.script = script + "\n"
 
-    return imports + froms
+    def get_import_list (self):
+        """
+            Retrieve basic import list of the user's script.
+            "import X" is translated to X.
+            "from X import Y" is translated to X.Y.
+        """
 
-def get_extended_import_list (script):
-    """
-        Retrieve the extended list of imports.
-        X.Y.Z is translated to [X, X.Y, X.Y.Z].
-    """
+        matches = re.findall(IMPORT_REGEXP, self.script)
+        imports = [e[1] for e in matches if e[1] != ""]
+        froms = [e[0] for e in matches if e[0] != ""]
 
-    l = get_import_list(script)
-    ret = []
-    for e in l:
-        n_e = e.split(".")
-        ret.append([".".join(n_e[:i + 1]) for i in range(len(n_e))])
-    return ret
+        imports = [re.sub(IMPORT_REP, "", e) for e in imports]
+        froms = [re.sub(FROM_REP, "", e) for e in froms]
+        froms = [re.sub(FROM_SPLIT, ".", e) for e in froms]
 
-def has_valid_imports (script, import_list):
-    """
-        Checks if the script has a valid import list. If not, returns the invalid module.
-    """
+        return imports + froms
 
-    script_imports = get_extended_import_list(script)
-    ret = True
+    def get_extended_import_list (self):
+        """
+            Retrieve the extended list of imports.
+            X.Y.Z is translated to [X, X.Y, X.Y.Z].
+        """
 
-    for imp in script_imports:
-        ret = True in [ext in import_list for ext in imp]
-        if not ret: return ret, imp[-1]
-    
-    return ret, None
+        l = self.get_import_list()
+        ret = []
+        for e in l:
+            n_e = e.split(".")
+            ret.append([".".join(n_e[:i + 1]) for i in range(len(n_e))])
+        return ret
 
-def run_user_script (script, valid_imports, glob = {}):
-    """
-        Function that runs script under a restricted environment.
-    """
+    def has_valid_imports (self, import_list):
+        """
+            Checks if the script has a valid import list. If not, returns the invalid module.
+        """
 
-    script += "\n"
+        script_imports = self.get_extended_import_list()
+        ret = True
 
-    failed, code_out, code_error = False, "", ""
+        for imp in script_imports:
+            ret = True in [ext in import_list for ext in imp]
+            if not ret: return ret, imp[-1]
+        
+        return ret, None
 
-    imp_res, imp_issue = has_valid_imports(script, valid_imports)
+    def run_user_script (self, valid_imports, glob = {}):
+        """
+            Function that runs script under a restricted environment.
+        """
 
-    if not imp_res:
-        failed = True
-        code_error = "ImportError: {} module cannot be imported. Unauthorised import.".format(imp_issue)
-        return failed, code_out, code_error
-    
-    print_catch = StringIO()
-    sys.stdout = print_catch
+        failed, code_out, code_error = False, "", ""
 
-    try:
-        exec(script, glob)
-        failed = False
-    
-    except Exception as e:
-        code_error = "Exception in script execution: {}".format(str(e))
-        failed = True
-    
-    finally:
-        sys.stdout = sys.__stdout__
-        code_out = print_catch.getvalue()
-        print_catch.close()
+        imp_res, imp_issue = self.has_valid_imports(valid_imports)
 
-        return failed, code_out, code_error
+        if not imp_res:
+            failed = True
+            code_error = "ImportError: {} module cannot be imported. Unauthorised import.".format(imp_issue)
+            return failed, code_out, code_error
+        
+        print_catch = StringIO()
+        sys.stdout = print_catch
+
+        try:
+            exec(self.script, glob)
+            failed = False
+        
+        except Exception as e:
+            code_error = "Exception in script execution: {}".format(str(e))
+            failed = True
+        
+        finally:
+            sys.stdout = sys.__stdout__
+            code_out = print_catch.getvalue()
+            print_catch.close()
+
+            return failed, code_out, code_error
