@@ -53,4 +53,4 @@ def has_valid_imports (script, import_list):
         ret = True in [ext in import_list for ext in imp]
         if not ret: return ret, imp[-1]
     
-    return ret
+    return ret, None
