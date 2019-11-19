@@ -3,6 +3,10 @@
         "id": "default",
         "next": "default",
         "backend": "default",
+        "script": [
+            "print(\"This script cannot be modified\")",
+            ""
+        ],
         "imports": [],
         "hints": [{
             "type": "text",
