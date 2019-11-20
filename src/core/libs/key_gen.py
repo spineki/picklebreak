@@ -25,6 +25,9 @@ class Key ():
 
         self.loaded_key = st.hexdigest()
         self.valid = False
+    
+    def get_key (self):
+        return self.loaded_key
 
     def check (self, key_check):
         """
