@@ -3,14 +3,18 @@
         "id": "default",
         "next": "default",
         "backend": "default",
-        "script": [
-            "print(\"This script cannot be modified\")",
-            ""
+        "scripts": [
+            "s = \"{}\"",
+            "",
+            "send_key(s)"
         ],
         "imports": [],
         "hints": [{
-            "type": "text",
+            "type": "txt",
             "data": "WOW!!! The key is {}"
+        }, {
+            "type": "txt",
+            "data": "HELLO C MOI"
         }]
     }
 }

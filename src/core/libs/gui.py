@@ -75,18 +75,20 @@ class Application(tk.Frame):
         """
         This function initiate the text zones in the text area at the right format  
         """
-        
+
         for i in range(len(text_list)):
-            if self.note_bloc_list[i] !=0:
+            if self.note_bloc_list[i] != 0 and text_list[i] != "":
                 self.note_bloc_list[i].destroy()
             if text_list[i] != "":
                 self.note_bloc_list[i] = tk.Text(self.input_test, bg="tomato", height=2)
                 self.note_bloc_list[i].insert("end", text_list[i])
                 self.note_bloc_list[i].config(state="disabled")
+                self.note_bloc_list[i].pack()
             elif self.note_bloc_list[i] == 0:
                 self.note_bloc_list[i] = tk.Text(self.input_test, bg="white", height=2)
                 self.note_bloc_list[i].insert("end", "")
-            self.note_bloc_list[i].pack()
+                self.note_bloc_list[i].pack()
+            
             self.input_test.window_create(index="end", window=self.note_bloc_list[i])
             self.input_test.insert(0.0, "")
             self.input_test.config(state="disabled")
@@ -148,24 +150,3 @@ class Application(tk.Frame):
     def reset_fct(self, hint_list, text_list):
         self.update_level_hint(hint_list)
         self.update_level_note_bloc(text_list)
-
-
-def test_Application(list_text_list, list_hint_list):
-    root = Application()
-    root.turbo_init_level(list_hint_list, list_text_list)
-    root.turbo_update_level(list_hint_list, list_text_list)
-
-    def test_exec():
-        root.turbo_init_level(list_hint_list2, list_text_list2)
-        root.turbo_update_level(list_hint_list2, list_text_list2)
-    
-    root.set_exec_fct(test_exec)
-    root.mainloop()
-
-
-list_text_list = ["Coucou, c'est el level1","","Tu peux écrire?", "", "", "", "", "", ""]
-list_hint_list = [("txt","Salut gérard"), ("img","./src/res/pickle.png")]
-list_text_list2 = ["Level2", ""]
-list_hint_list2 = [("img","./src/res/pickle_in_prison.png")]
-
-test_Application(list_text_list, list_hint_list)

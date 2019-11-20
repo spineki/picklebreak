@@ -7,14 +7,20 @@ class Challenge ():
         Challenge object. Makes the link between every back-end object.
     """
 
-    def __init__ (self, level, win_frame, executer, key_gen):
+    def __init__ (self, level, app, executer, key_gen):
         self.level = level
-        self.win_frame = win_frame
+        self.app = app
         self.executer = executer
         self.key = key_gen
         self.objs = []
 
-        self.win_frame.create()
+        self.key.gen()
+
+        ext_hints = [h[1] for h in self.level.hints]
+        self.new_hints, self.new_scripts, self.objs = self.level.gen(self.key.get_key(), ext_hints, self.level.scripts)
+
+        parsed = [(self.level.hints[i][0], self.new_hints[i]) for i in range(len(self.level.hints))]
+        self.app.turbo_init_level(parsed, self.new_scripts)
     
     def reset (self):
         """
@@ -27,14 +33,14 @@ class Challenge ():
         self.new_hints, self.new_scripts, self.objs = self.level.gen(self.key.get_key(), ext_hints, self.level.scripts)
 
         parsed = [(self.level.hints[i][0], self.new_hints[i]) for i in range(len(self.level.hints))]
-        self.win_frame.update(parsed, self.new_scripts)
+        self.app.turbo_update_level(parsed, self.new_scripts)
     
     def out (self):
         """
             Out / close function called on leaving or pre-code execution.
         """
 
-        self.level.close(self.key.get_key(self.level.name), self.objs)
+        self.level.close(self.key.get_key(), self.objs)
     
     def execute (self):
         """
@@ -44,7 +50,7 @@ class Challenge ():
         self.out()
         self.reset()
 
-        script = self.win_frame.get_script()
+        script = self.app.get_script()
 
         self.executer.set_script(script)
 

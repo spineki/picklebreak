@@ -1,2 +1,6 @@
+from src.core.game import Core
+
 if __name__ == '__main__':
-    pass
+    c = Core()
+    c.load_challenge("default")
+    c.run()
