@@ -9,7 +9,7 @@ from src.core.libs.user_code_manager import Executer
 from src.core.libs.gui import Application
 from src.core.libs.save import Save
 
-DEFAULT_LEVEL = "default"
+DEFAULT_LEVEL = "0_the_basics"
 
 class Core ():
     """
@@ -30,12 +30,6 @@ class Core ():
                 self.app.display_pop_up("Vous avez vaincu!")
                 self.load_challenge(self.challenge.level.next)
                 self.save.setter(self.challenge.level.name)
-
-
-            print(checked, failed, code_out, code_error)
-
-            self.save.setter(self.challenge.level.name)
-
     
         @self.app.set_reset_fct
         def refresh ():
@@ -58,3 +52,6 @@ class Core ():
     def create_new_levels (self, n):
         for i in range(n):
             Level.write()
+    
+    def reset_game(self):
+        self.save.setter(DEFAULT_LEVEL)

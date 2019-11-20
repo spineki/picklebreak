@@ -16,7 +16,6 @@
             }
         ]
     },
-
     "default2": {
         "id": "default2",
         "next": "default",
@@ -33,5 +32,29 @@
                 "data": "WOW!!! The key is not {}"
             }
         ]
+    },
+    "0_the_basics": {
+        "id": "0_the_basics",
+        "next": "",
+        "backend": "0_the_basics",
+        "scripts": [
+            "# Welcome to PickleBreak. Learn a large component",
+            "# of python function, libraries by resolving challenges.",
+            "# The goal is to retrieve a key like this one:",
+            "# {}",
+            "# Pressing reset will regenerate all key-based elements",
+            "# whereas execute will reset and run your code.",
+            " ",
+            "# To send your answer, just call send_key like:",
+            "# send_key(key)",
+            "# Here, just try it, the key is right there.",
+            "s = \"{}\"",
+            ""
+        ],
+        "imports": [],
+        "hints": [{
+            "type": "txt",
+            "data": "Level 0: The Basics."
+        }]
     }
 }
