@@ -43,7 +43,7 @@ class Level ():
         self.imports = json_data["imports"]
         self.scripts = json_data["scripts"]
 
-        backend_import = importlib.import_module("src.res.levels." + json_data["backend"])
+        backend_import = importlib.import_module("res.levels." + json_data["backend"],"src")
         self.gen = backend_import.gen
         self.close = backend_import.close
         
