@@ -14,7 +14,10 @@ def gen (key, hints_data, scripts):
     new = hints_data.copy()
     new[0] = new[0].format(key)
 
-    return new, scripts.copy(), [5]
+    new_s = scripts.copy()
+    new_s[0] = new_s[0].format(key)
+
+    return new, new_s, [5]
 
 def close (key, objs):
     """

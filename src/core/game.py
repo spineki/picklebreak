@@ -2,11 +2,11 @@
     Master object, controlling everything.
 """
 
-from libs.challenge_manager import Challenge
-from libs.key_gen import Key
-from libs.level_manager import Level
-from libs.user_code_manager import Executer
-# from libs.gui.fram import WinFrame
+from src.core.libs.challenge_manager import Challenge
+from src.core.libs.key_gen import Key
+from src.core.libs.level_manager import Level
+from src.core.libs.user_code_manager import Executer
+from src.core.libs.gui import Application
 
 class Core ():
     """
@@ -15,11 +15,14 @@ class Core ():
      
     def __init__ (self):
         self.challenge = None
-        self.app = None
+        self.app = Application()
 
+        @self.app.set_exec_fct
         def execute ():
             checked, failed, code_out, code_error = self.challenge.execute()
+            print(checked, failed, code_out, code_error)
     
+        @self.app.set_reset_fct
         def refresh ():
             self.challenge.out()
             self.challenge.reset()
@@ -33,3 +36,6 @@ class Core ():
         self.challenge = Challenge(level, self.app, Executer(), Key())
 
         self.challenge.reset()
+    
+    def run (self):
+        self.app.mainloop()
