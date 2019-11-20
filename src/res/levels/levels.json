@@ -5,12 +5,16 @@
         "backend": "default",
         "scripts": [
             "s = \"{}\"",
-            ""
+            "",
+            "send_key(s)"
         ],
         "imports": [],
         "hints": [{
             "type": "txt",
             "data": "WOW!!! The key is {}"
+        }, {
+            "type": "txt",
+            "data": "HELLO C MOI"
         }]
     }
 }

@@ -20,6 +20,7 @@ class Core ():
         @self.app.set_exec_fct
         def execute ():
             checked, failed, code_out, code_error = self.challenge.execute()
+            self.app.display_output(code_out + ("\n" + code_error if failed else ""))
             print(checked, failed, code_out, code_error)
     
         @self.app.set_reset_fct
