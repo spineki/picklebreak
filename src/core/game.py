@@ -7,6 +7,9 @@ from src.core.libs.key_gen import Key
 from src.core.libs.level_manager import Level
 from src.core.libs.user_code_manager import Executer
 from src.core.libs.gui import Application
+from src.core.libs.save import Save
+
+DEFAULT_LEVEL = "default"
 
 class Core ():
     """
@@ -16,12 +19,14 @@ class Core ():
     def __init__ (self):
         self.challenge = None
         self.app = Application()
+        self.save = Save(DEFAULT_LEVEL)
 
         @self.app.set_exec_fct
         def execute ():
             checked, failed, code_out, code_error = self.challenge.execute()
             self.app.display_output(code_out + ("\n" + code_error if failed else ""))
-            print(checked, failed, code_out, code_error)
+            
+            self.save.setter(self.challenge.level.name)
     
         @self.app.set_reset_fct
         def refresh ():
