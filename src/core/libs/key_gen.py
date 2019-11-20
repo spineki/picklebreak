@@ -7,6 +7,9 @@ from time import time_ns
 import hashlib
 
 class Key ():
+    """
+        Object used to generate and store challenge's key.
+    """
 
     def __init__ (self):
         self.loaded_key = ""
@@ -14,7 +17,7 @@ class Key ():
 
     def gen (self):
         """
-            Used to create and retrieve the key to resolve the challenge.
+            Used to create the key to resolve the challenge.
         """
 
         # This function is used whenever a random byte is needed.
@@ -24,6 +27,14 @@ class Key ():
         for i in range(f() * f()): st.update(bytes([f() for j in range(f() % 0x10)]))
 
         self.loaded_key = st.hexdigest()
+        self.valid = False
+    
+    def get_key (self):
+        """
+            Retrieve the generated key.
+        """
+
+        return self.loaded_key
 
     def check (self, key_check):
         """

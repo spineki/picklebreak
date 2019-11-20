@@ -2,31 +2,41 @@
     Master object, controlling everything.
 """
 
-from libs.challenge_manager import Challenge
-from libs.key_gen import Key
-from libs.level_manager import load_level
-from libs.user_code_manager import Executer
-# from libs.gui.fram import WinFrame
+from src.core.libs.challenge_manager import Challenge
+from src.core.libs.key_gen import Key
+from src.core.libs.level_manager import Level
+from src.core.libs.user_code_manager import Executer
+from src.core.libs.gui import Application
 
 class Core ():
+    """
+        Object that links the frontend with the backend and controls the game.
+    """
      
     def __init__ (self):
         self.challenge = None
-        self.app = None
-        # Here loads and init tkinter app
+        self.app = Application()
 
-        self.win_frame = None
+        @self.app.set_exec_fct
+        def execute ():
+            checked, failed, code_out, code_error = self.challenge.execute()
+            self.app.display_output(code_out + ("\n" + code_error if failed else ""))
+            print(checked, failed, code_out, code_error)
+    
+        @self.app.set_reset_fct
+        def refresh ():
+            self.challenge.out()
+            self.challenge.reset()
 
     def load_challenge (self, name):
-        level = load_level(name)
-        self.challenge = Challenge(level, self.win_frame, Executer(), Key())
+        """
+            Load a challenge from level name.
+        """
 
-        self.challenge.setter()
+        level = Level(name)
+        self.challenge = Challenge(level, self.app, Executer(), Key())
+
         self.challenge.reset()
     
-    def execute (self):
-        checked, failed, code_out, code_error = self.challenge.execute()
-    
-    def refresh (self):
-        self.challenge.out()
-        self.challenge.reset()
+    def run (self):
+        self.app.mainloop()
