@@ -2,7 +2,7 @@
     "pickle_level": {
         "id": "26",
         "next": "27",
-        "backend": "this is the backend",
+        "backend": "backend_test",
         "scripts": [
             "print(\"This script cannot be modified\")",
             ""
@@ -25,6 +25,30 @@
     },
     "34": {
         "id": "34",
+        "next": "27",
+        "backend": null,
+        "scripts": [
+            "print(\"This script cannot be modified\")",
+            ""
+        ],
+        "imports": [
+            "i",
+            "m",
+            "p",
+            "o",
+            "r",
+            "t",
+            "s"
+        ],
+        "hints": [
+            {
+                "type": "text",
+                "data": "WOW!!! The key is {}"
+            }
+        ]
+    },
+    "45": {
+        "id": "45",
         "next": "27",
         "backend": null,
         "scripts": [
