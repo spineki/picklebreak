@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 from PIL import Image, ImageTk
 
 class Application(tk.Frame):
@@ -247,7 +248,10 @@ class Application(tk.Frame):
             self.script.append(self.notepad_list[i].get(0.0, "end"))
         self.script = "\n".join(self.script)
         return self.script
-    
+
+    def display_pop_up(self, message):
+        messagebox.showinfo("Victory", message)
+
     def set_exec_fct(self, function):
         """
         Bind a fonction to the "Execute" button
@@ -268,7 +272,7 @@ class Application(tk.Frame):
         """
         self.btn_reset.config(command = function)
 
-
+    
 
 
 
