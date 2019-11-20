@@ -21,6 +21,9 @@ class Core ():
         def execute ():
             checked, failed, code_out, code_error = self.challenge.execute()
             self.app.display_output(code_out + ("\n" + code_error if failed else ""))
+            if checked:
+                self.load_challenge(self.challenge.level.next)
+                self.app.display_pop_up("Vous avez vaincu!")
             print(checked, failed, code_out, code_error)
     
         @self.app.set_reset_fct
