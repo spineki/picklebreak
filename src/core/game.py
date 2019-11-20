@@ -27,9 +27,10 @@ class Core ():
             self.app.display_output(code_out + ("\n" + code_error if failed else ""))
 
             if checked:
+                self.app.display_pop_up("Vous avez vaincu!")
                 self.load_challenge(self.challenge.level.next)
-                #self.app.display_pop_up("Vous avez vaincu!")
                 self.save.setter(self.challenge.level.name)
+
 
             print(checked, failed, code_out, code_error)
 
