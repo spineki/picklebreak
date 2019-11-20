@@ -36,9 +36,9 @@ class Level ():
         self.imports = json_data["imports"]
         self.scripts = json_data["scripts"]
 
-        backend_import = importlib.import_module("src.res.levels." + json_data["backend"])
-        self.gen = backend_import.gen
-        self.close = backend_import.close
+        #backend_import = importlib.import_module("src.res.levels." + json_data["backend"])
+        #self.gen = backend_import.gen
+        #self.close = backend_import.close
 
         self.hints = []
         for h in json_data["hints"]:
@@ -52,7 +52,7 @@ def load_level(level,file = LEVELS_FILE):
 
     with open(file, 'r') as f:
         dic = json.load(f)
-    return Level(dic[level])
+    return dic[level]
 
 def write_level (level = None, backend_file = None,file = LEVELS_FILE):
     """
@@ -95,18 +95,14 @@ def write_level (level = None, backend_file = None,file = LEVELS_FILE):
     with open(file, 'w') as f:
         json.dump(dic, f, indent=4)
 
-def del_level (level, file = LEVELS_FILE):
+def del_level(level,file= LEVELS_FILE):
     """
         Deletes a level from its object or name.
     """
 
-    with open(file, "r") as f:
-        dic = json.load(f)
-
-    if isinstance(level, Level):
-        del dic[level.name]
-    else:
-        del dic[level]
-
-    with open(file, 'w') as f:
-        json.dump(dic, f, indent=4)
+    fichier = open(file,'r')
+    dic = json.load(fichier)
+    fichier = open(file,'w')
+    del dic[str(level)]
+    json.dump(dic,fichier,indent=4)
+    fichier.close()

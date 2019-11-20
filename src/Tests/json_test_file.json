@@ -3,7 +3,7 @@
         "id": "26",
         "next": "27",
         "backend": "this is the backend",
-        "script": [
+        "scripts": [
             "print(\"This script cannot be modified\")",
             ""
         ],
