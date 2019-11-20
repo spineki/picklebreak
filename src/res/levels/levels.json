@@ -1,7 +1,7 @@
 {
     "default": {
         "id": "default",
-        "next": "default",
+        "next": "default2",
         "backend": "default",
         "scripts": [
             "s = \"{}\"",
@@ -12,6 +12,24 @@
         "hints": [{
             "type": "txt",
             "data": "WOW!!! The key is {}"
+        }, {
+            "type": "txt",
+            "data": "HELLO C MOI"
+        }]
+    },
+    "default2": {
+        "id": "default2",
+        "next": "default",
+        "backend": "default",
+        "scripts": [
+            "s = \"{}\"",
+            "",
+            "send_key(s)"
+        ],
+        "imports": [],
+        "hints": [{
+            "type": "txt",
+            "data": "WOW!!! The key is not {}"
         }, {
             "type": "txt",
             "data": "HELLO C MOI"

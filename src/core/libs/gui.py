@@ -146,7 +146,7 @@ class Application(tk.Frame):
 
         
         for i in range(len(notepad_list)):
-            if self.notepad_list[i] !=0:
+            if self.notepad_list[i] != 0 and notepad_list[i] != "":
                 self.notepad_list[i].destroy()
             if notepad_list[i] != "":
                 self.notepad_list[i] = tk.Text(self.master_text, bg="tomato", fg="white", height=2)
