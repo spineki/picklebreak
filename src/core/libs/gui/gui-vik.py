@@ -9,6 +9,7 @@ class Application(tk.Frame):
         self.master.title("Pickle Break")
         self.create_widgets()
         self.hint_list=[]
+        
     
     def mainloop(self):
         return self.master.mainloop()
