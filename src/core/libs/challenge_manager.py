@@ -4,7 +4,7 @@
 
 class Challenge ():
     """
-        Challenge object.
+        Challenge object. Makes the link between every back-end object.
     """
 
     def __init__ (self, level, win_frame, executer, key_gen):
@@ -15,10 +15,6 @@ class Challenge ():
         self.objs = []
 
         self.win_frame.create()
-    
-    def setter (self):
-        # Setter / level init
-        pass
     
     def reset (self):
         """
@@ -42,7 +38,7 @@ class Challenge ():
     
     def execute (self):
         """
-            Code execution.
+            Executes user's code and returns code's status.
         """
 
         self.out()
