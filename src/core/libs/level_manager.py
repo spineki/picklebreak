@@ -6,6 +6,7 @@ import importlib
 import json
 
 LEVELS_FILE = "src/res/levels/levels.json"
+LEVELS_JSON = None
 
 class Level ():
     """
@@ -29,7 +30,14 @@ class Level ():
             close (key, objs)       -> Smoothly kills everything.
     """
 
-    def __init__ (self, json_data):
+    def __init__ (self, level_name, levels_file = LEVELS_FILE):
+        global LEVELS_JSON
+        if LEVELS_JSON == None:
+            with open(levels_file, 'r') as f:
+                LEVELS_JSON = json.load(f)
+        
+        json_data = LEVELS_JSON[level_name]
+
         self.name = json_data["id"]
         self.next = json_data["next"]
         self.imports = json_data["imports"]
@@ -44,69 +52,61 @@ class Level ():
             e = (h["type"], h["data"])
             self.hints.append(e)
 
+    @staticmethod
+    def write (level = None, backend_file = None):
+        """
+            Write a new level to the json. Creates an empty one if no args are passed
+        """
 
-def load_level (level):
-    """
-        Load a level from its name.
-    """
+        with open(LEVELS_FILE, 'r') as f:
+            dic = json.load(f)
 
-    with open(LEVELS_FILE, 'r') as f:
-        dic = json.load(f)
-    return Level(dic[level])
+        if level == None: # Create a new level if level == None
 
-def write_level (level = None, backend_file = None):
-    """
-        Write a new level to the json. Creates an empty one if no args are passed
-    """
+            new_name = "new_0"
+            while new_name in dic:
+                new_name = "new_" + str(int(new_name[4:]) + 1)
 
-    with open(LEVELS_FILE, 'r') as f:
-        dic = json.load(f)
+            dic[new_name] = {
+                "id": new_name,
+                "next": "",
+                "backend": "",
+                "scripts": [""],
+                "imports": [],
+                "hints": []
+            }
 
-    if level == None: # Create a new level if level == None
+        else:
+            dic[level.name] = {
+                "id": level.name,
+                "next": level.next,
+                "backend": backend_file,
+                "scripts": level.scripts,
+                "imports": level.imports,
+                "hints": [
+                    {
+                        "type": h[0],
+                        "data": h[1]
+                    } for h in level.hints
+                ]
+            }
+        
+        with open(LEVELS_FILE, 'w') as f:
+            json.dump(dic, f, indent=4)
 
-        new_name = "new_0"
-        while new_name in dic:
-            new_name = "new_" + str(int(new_name[4:]) + 1)
+    @staticmethod
+    def delete (level):
+        """
+            Deletes a level from its object or name.
+        """
 
-        dic[new_name] = {
-            "id": new_name,
-            "next": "",
-            "backend": "",
-            "scripts": [""],
-            "imports": [],
-            "hints": []
-        }
+        with open(LEVELS_FILE, "r") as f:
+            dic = json.load(f)
 
-    else:
-        dic[level.name] = {
-            "id": level.name,
-            "next": level.next,
-            "backend": backend_file,
-            "scripts": level.scripts,
-            "imports": level.imports,
-            "hints": [
-                {
-                    "type": h[0],
-                    "data": h[1]
-                } for h in level.hints
-            ]
-        }
-    
-    with open(LEVELS_FILE, 'w') as f:
-        json.dump(dic, f, indent=4)
+        if isinstance(level, Level):
+            del dic[level.name]
+        else:
+            del dic[level]
 
-def del_level (level):
-    """
-        Deletes a level from its object or name.
-    """
-
-    with open(LEVELS_FILE, "r") as f:
-        dic = json.load(f)
-
-    if isinstance(level, Level):
-        del dic[level.name]
-    else:
-        del dic[level]
-
-    with open(LEVELS_FILE, 'w') as f:
-        json.dump(dic, f, indent=4)
+        with open(LEVELS_FILE, 'w') as f:
+            json.dump(dic, f, indent=4)
