@@ -9,14 +9,14 @@
             "send_key(s)"
         ],
         "imports": [],
-        "hints": [{
-            "type": "txt",
-            "data": "WOW!!! The key is {}"
-        }, {
-            "type": "txt",
-            "data": "HELLO C MOI"
-        }]
+        "hints": [
+            {
+                "type": "txt",
+                "data": "WOW!!! The key is {}"
+            }
+        ]
     },
+
     "default2": {
         "id": "default2",
         "next": "default",
@@ -27,12 +27,11 @@
             "send_key(s)"
         ],
         "imports": [],
-        "hints": [{
-            "type": "txt",
-            "data": "WOW!!! The key is not {}"
-        }, {
-            "type": "txt",
-            "data": "HELLO C MOI"
-        }]
+        "hints": [
+            {
+                "type": "txt",
+                "data": "WOW!!! The key is not {}"
+            }
+        ]
     }
 }

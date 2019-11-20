@@ -54,3 +54,7 @@ class Core ():
     
     def run (self):
         self.app.mainloop()
+    
+    def create_new_levels (self, n):
+        for i in range(n):
+            Level.write()
