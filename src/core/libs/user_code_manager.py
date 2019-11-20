@@ -86,7 +86,7 @@ class Executer ():
             failed = False
         
         except Exception as e:
-            code_error = "Exception in script execution: {}".format(str(e))
+            code_error = "{} in script execution: {}".format(type(e).__name__, e)
             failed = True
         
         finally:

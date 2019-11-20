@@ -137,6 +137,7 @@ class Application(tk.Frame):
         RETURN:
             None
         """
+
         for i in range(len(notepad_list)):
             if self.notepad_list[i] !=0:
                 self.notepad_list[i].destroy()
@@ -153,6 +154,7 @@ class Application(tk.Frame):
             self.master_text.config(state="disabled")
 
 # HINT LEVEL FUNCTIONS **************************************************************************** 
+
     def init_level_hint(self, hint_list):
         """
         Initialization of the hint panel for a level:
@@ -263,6 +265,7 @@ class Application(tk.Frame):
 
 
 
+
 #Test part
 
 def test_Application(list_notepad_list, list_hint_list):
@@ -287,3 +290,4 @@ if __name__ == '__main__':
     list_notepad_list2 = ["Level2", ""]
     list_hint_list2 = [("img","./src/res/pickle_in_prison.png")]
     test_Application(list_notepad_list, list_hint_list)
+
