@@ -138,6 +138,13 @@ class Application(tk.Frame):
             None
         """
 
+        def resize (event):
+            widget = event.widget
+            key_enter = event.keycode
+            if key_enter in (13,8,17,46): #Creation of a new line
+                widget.config(height=(max(2, widget.get("1.0", "end").count("\n"))))
+
+        
         for i in range(len(notepad_list)):
             if self.notepad_list[i] !=0:
                 self.notepad_list[i].destroy()
@@ -148,7 +155,8 @@ class Application(tk.Frame):
             elif self.notepad_list[i] == 0:
                 self.notepad_list[i] = tk.Text(self.master_text, bg="white", fg="black", height=2)
                 self.notepad_list[i].insert("end", "")
-            self.notepad_list[i].pack()
+                self.notepad_list[i].bind("<KeyRelease>", resize)
+            self.notepad_list[i].pack(expand=True, fill="both")
             self.master_text.window_create(index="end", window=self.notepad_list[i])
             self.master_text.insert(0.0, "")
             self.master_text.config(state="disabled")
