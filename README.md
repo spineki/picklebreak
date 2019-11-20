@@ -38,5 +38,8 @@ run picklebreak.py with python (E.G: type __python picklebreak.py__ in your term
 ## Contributing
 [Please follow these steps to contribute](contributing.md).
 
+### Trello Link
+[Here](https://trello.com/b/9lrhoAEf/pickle-break), take a look at the project plannig
+
 ## License
 This project is licensed under the [MIT License](LICENSE.md).
