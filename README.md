@@ -13,7 +13,7 @@ A python software designed to challenge your python skills on python puzzles (th
 
 
 ## Authors: 
-- [Yohann Bosqued](
+- [Yohann Bosqued]
 - [Remon Majoor](https://github.com/Remon-prog)
 - [Alexandre LeBian]
 - [Victor Collodel]
@@ -24,7 +24,7 @@ A python software designed to challenge your python skills on python puzzles (th
     
 ## Contributing
 
-[Please follow these steps to contribute](CONTRIBUTING.md).
+[Please follow these steps to contribute](contributing.md).
 
 ## License
 This project is licensed under the [MIT License](LICENSE.md).
