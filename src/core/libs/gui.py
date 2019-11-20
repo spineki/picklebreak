@@ -61,7 +61,10 @@ class Application(tk.Frame):
         self.output_text.pack()
     
     def init_level_note_bloc(self, text_list):
-        self.note_bloc_list=[]
+        if self.note_bloc_list != []:
+            for widget in self.note_bloc_list:
+                widget.destroy()
+            self.note_bloc_list=[]
         for text in text_list:
             self.note_bloc_list.append(0)
 
@@ -89,6 +92,10 @@ class Application(tk.Frame):
             self.input_test.config(state="disabled")
     
     def init_level_hint(self, hint_list):
+        if self.hint_list != []:
+            for widget in self.hint_list:
+                widget.destroy()
+            self.hint_list=[]
         self.hint_list=[]
         for hint in hint_list:
             self.hint_list.append(0) 
@@ -142,14 +149,23 @@ class Application(tk.Frame):
         self.update_level_hint(hint_list)
         self.update_level_note_bloc(text_list)
 
+
 def test_Application(list_text_list, list_hint_list):
     root = Application()
     root.turbo_init_level(list_hint_list, list_text_list)
     root.turbo_update_level(list_hint_list, list_text_list)
+
+    def test_exec():
+        root.turbo_init_level(list_hint_list2, list_text_list2)
+        root.turbo_update_level(list_hint_list2, list_text_list2)
+    
+    root.set_exec_fct(test_exec)
     root.mainloop()
 
 
-list_text_list = ["Coucou","","Tu peux écrire?", "", "", "", "", "", ""]
+list_text_list = ["Coucou, c'est el level1","","Tu peux écrire?", "", "", "", "", "", ""]
 list_hint_list = [("txt","Salut gérard"), ("img","./src/res/pickle.png")]
+list_text_list2 = ["Level2", ""]
+list_hint_list2 = [("img","./src/res/pickle_in_prison.png")]
 
 test_Application(list_text_list, list_hint_list)
