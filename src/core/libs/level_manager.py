@@ -13,7 +13,7 @@ class Level ():
         Object representing a level. It needs to be loaded from a json file with collected functions.
         The json file for a level must looks like:
         {
-            "id"        : <level name>,
+            "id"        : <level id>,
             "next"      : <next level name>,
             "backend"   : <backend script file>,
             "scripts"   : [<script sets>, ...],
@@ -30,7 +30,7 @@ class Level ():
             close (key, objs)       -> Smoothly kills everything.
     """
 
-    def __init__ (self, json_data):
+    def __init__(self, json_data):
         self.name = json_data["id"]
         self.next = json_data["next"]
         self.imports = json_data["imports"]
@@ -45,21 +45,21 @@ class Level ():
             e = (h["type"], h["data"])
             self.hints.append(e)
 
-def load_level (level):
+def load_level(level,file = LEVELS_FILE):
     """
         Load a level from its name.
     """
 
-    with open(LEVELS_FILE, 'r') as f:
+    with open(file, 'r') as f:
         dic = json.load(f)
     return Level(dic[level])
 
-def write_level (level = None, backend_file = None):
+def write_level (level = None, backend_file = None,file = LEVELS_FILE):
     """
         Write a new level to the json. Creates an empty one if no args are passed
     """
 
-    with open(LEVELS_FILE, 'r') as f:
+    with open(file, 'r') as f:
         dic = json.load(f)
 
     if level == None: # Create a new level if level == None
@@ -92,15 +92,15 @@ def write_level (level = None, backend_file = None):
             ]
         }
     
-    with open(LEVELS_FILE, 'w') as f:
+    with open(file, 'w') as f:
         json.dump(dic, f, indent=4)
 
-def del_level (level):
+def del_level (level, file = LEVELS_FILE):
     """
         Deletes a level from its object or name.
     """
 
-    with open(LEVELS_FILE, "r") as f:
+    with open(file, "r") as f:
         dic = json.load(f)
 
     if isinstance(level, Level):
@@ -108,5 +108,5 @@ def del_level (level):
     else:
         del dic[level]
 
-    with open(LEVELS_FILE, 'w') as f:
+    with open(file, 'w') as f:
         json.dump(dic, f, indent=4)

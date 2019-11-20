@@ -1,0 +1,16 @@
+{
+    "pickle_level": {
+        "id": "26",
+        "next": "27",
+        "backend": "this is the backend",
+        "script": [
+            "print(\"This script cannot be modified\")",
+            ""
+        ],
+        "imports": ["i","m","p","o","r","t","s"],
+        "hints": [{
+            "type": "text",
+            "data": "WOW!!! The key is {}"
+        }]
+    }
+}
