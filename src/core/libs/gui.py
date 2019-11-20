@@ -8,10 +8,26 @@ class Application(tk.Frame):
         self.master.title("Pickle Break")
         self.hint_list=[]
         self.note_bloc_list=[]
+        self.turbo_init_frame()
     
     def mainloop(self):
         return self.master.mainloop()
     
+    def turbo_init_frame(self):
+        #Initialisation of all the frames
+        self.init_frames()
+        self.init_note_bloc()
+        self.init_hint()
+        self.init_output()
+
+    def turbo_init_level(self, hint_list,text_list):
+        self.init_level_hint(hint_list)
+        self.init_level_note_bloc(text_list)
+
+    def turbo_update_level(self, hint_list,text_list):
+        self.update_level_hint(hint_list)
+        self.update_level_note_bloc(text_list)
+
     def init_frames(self):
         #Generation of the 3 principales frames
         self.game_frame_hint = tk.Frame(self.master, width=300, height=200, bg="red")
@@ -23,16 +39,16 @@ class Application(tk.Frame):
 
     def init_note_bloc(self):
         #Generation of the text zone and its scrollbar
-        self.myscrollbar= tk.Scrollbar(self.game_frame_input,orient="vertical")
-        self.input_test = tk.Text(self.game_frame_input,bg="white", width=50)
+        self.myscrollbar= tk.Scrollbar(self.game_frame_note_bloc,orient="vertical")
+        self.input_test = tk.Text(self.game_frame_note_bloc,bg="white", width=50)
         self.myscrollbar.config(command=self.input_test.yview)
         self.input_test.config(yscrollcommand=self.myscrollbar.set)
         self.myscrollbar.pack(side="right",fill="y")
         self.input_test.pack()
 
         #Creation of the Buttons and linked to their functions
-        self.bp_exec = tk.Button(self.game_frame_input,text="Execute",fg='navy')
-        self.bp_reset = tk.Button(self.game_frame_input,text="Reset",fg='navy')
+        self.bp_exec = tk.Button(self.game_frame_note_bloc,text="Execute",fg='navy')
+        self.bp_reset = tk.Button(self.game_frame_note_bloc,text="Reset",fg='navy')
         self.bp_exec.pack(side= "bottom",padx=10,pady=10)
         self.bp_reset.pack(side= "bottom",padx=10,pady=10)
     
@@ -53,7 +69,10 @@ class Application(tk.Frame):
 
 
     def update_level_note_bloc(self, text_list):
-
+        """
+        This function initiate the text zones in the text area at the right format  
+        """
+        
         for i in range(len(text_list)):
             if self.note_bloc_list[i] !=0:
                 self.note_bloc_list[i].destroy()
@@ -61,13 +80,13 @@ class Application(tk.Frame):
                 self.note_bloc_list[i] = tk.Text(self.input_test, bg="tomato", height=2)
                 self.note_bloc_list[i].insert("end", text_list[i])
                 self.note_bloc_list[i].config(state="disabled")
-            else:
+            elif self.note_bloc_list[i] == 0:
                 self.note_bloc_list[i] = tk.Text(self.input_test, bg="white", height=2)
-                self.note_bloc_list[i].insert("end", "#You can write here")
+                self.note_bloc_list[i].insert("end", "")
             self.note_bloc_list[i].pack()
             self.input_test.window_create(index="end", window=self.note_bloc_list[i])
-        self.input_test.insert(0.0, "")
-        self.input_test.config(state="disabled")
+            self.input_test.insert(0.0, "")
+            self.input_test.config(state="disabled")
     
     def init_level_hint(self, hint_list):
         self.hint_list=[]
@@ -120,5 +139,17 @@ class Application(tk.Frame):
         self.bp_reset.config(command = function)
 
     def reset_fct(self, hint_list, text_list):
-        update_level_hint(hint_list)
-        update_level_note_bloc(text_list)
+        self.update_level_hint(hint_list)
+        self.update_level_note_bloc(text_list)
+
+def test_Application(list_text_list, list_hint_list):
+    root = Application()
+    root.turbo_init_level(list_hint_list, list_text_list)
+    root.turbo_update_level(list_hint_list, list_text_list)
+    root.mainloop()
+
+
+list_text_list = ["Coucou","","Tu peux écrire?", "", "", "", "", "", ""]
+list_hint_list = [("txt","Salut gérard"), ("img","./src/res/pickle.png")]
+
+test_Application(list_text_list, list_hint_list)
