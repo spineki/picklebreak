@@ -79,16 +79,18 @@ class Application(tk.Frame):
             None
         """
         self.notepad_scrollbar= tk.Scrollbar(self.game_frame_notepad,orient="vertical")
-        self.master_text = tk.Text(self.game_frame_notepad,bg="white", width=50)
+        self.master_text = tk.Text(self.game_frame_notepad,bg="gray50", width=70)
         self.notepad_scrollbar.config(command=self.master_text.yview)
         self.master_text.config(yscrollcommand=self.notepad_scrollbar.set)
         self.notepad_scrollbar.pack(side="right",fill="y")
         self.master_text.pack()
 
-        self.btn_exec = tk.Button(self.game_frame_notepad,text="Execute",fg='navy')
-        self.btn_reset = tk.Button(self.game_frame_notepad,text="Reset",fg='navy')
-        self.btn_exec.pack(side= "bottom",padx=10,pady=10)
-        self.btn_reset.pack(side= "bottom",padx=10,pady=10)
+        in_frame = tk.Frame(self.game_frame_notepad, bg = "yellow")
+        self.btn_exec = tk.Button(in_frame, text="Execute", fg='black')
+        self.btn_reset = tk.Button(in_frame, text="Reset", fg='black')
+        self.btn_exec.pack(side= "right", padx = 15, pady = 10)
+        self.btn_reset.pack(side= "left", padx = 15, pady = 10)
+        in_frame.pack(expand = True, fill = "both", side = "bottom", padx = 20)
     
     def init_hint(self):
         """
@@ -108,7 +110,7 @@ class Application(tk.Frame):
         RETURN:
             None
         """
-        self.output_text = tk.Text(self.game_frame_output, bg="black", fg="white")
+        self.output_text = tk.Text(self.game_frame_output, bg="black", fg="white", height = 10)
         self.output_text.config(state="disabled")
         self.output_text.pack()
 
@@ -141,22 +143,25 @@ class Application(tk.Frame):
 
         def resize (event):
             widget = event.widget
-            key_enter = event.keycode
-            if key_enter in (13,8,17,46): #Creation of a new line
+            key_enter = event.keysym
+            if key_enter.lower() in ("control_l", "delete", "backspace", "return"): # Creation of a new line
                 widget.config(height=(max(2, widget.get("1.0", "end").count("\n"))))
 
         
         for i in range(len(notepad_list)):
             if self.notepad_list[i] != 0 and notepad_list[i] != "":
                 self.notepad_list[i].destroy()
+                
             if notepad_list[i] != "":
-                self.notepad_list[i] = tk.Text(self.master_text, bg="tomato", fg="white", height=2)
+                self.notepad_list[i] = tk.Text(self.master_text, bg="tomato", fg="white", height = notepad_list[i].count("\n") + 1)
                 self.notepad_list[i].insert("end", notepad_list[i])
                 self.notepad_list[i].config(state="disabled")
+                
             elif self.notepad_list[i] == 0:
                 self.notepad_list[i] = tk.Text(self.master_text, bg="white", fg="black", height=2)
                 self.notepad_list[i].insert("end", "")
                 self.notepad_list[i].bind("<KeyRelease>", resize)
+                
             self.notepad_list[i].pack(expand=True, fill="both")
             self.master_text.window_create(index="end", window=self.notepad_list[i])
             self.master_text.insert(0.0, "")
