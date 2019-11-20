@@ -52,11 +52,6 @@ class Challenge ():
 
         self.executer.set_script(script)
 
-        extracted_value = ""
-        def send_key (val):
-            global extracted_value
-            extracted_value = val
+        failed, code_out, code_error = self.executer.run_user_script(self.level.imports, {"send_key": self.key.check})
 
-        failed, code_out, code_error = self.executer.run_user_script(self.level.imports, {"send_key": send_key})
-
-        return self.key.check(extracted_value, self.level.name), failed, code_out, code_error
+        return self.key.valid, failed, code_out, code_error

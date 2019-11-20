@@ -9,9 +9,10 @@ import hashlib
 class Key ():
 
     def __init__ (self):
-        self.loaded_keys = {}
+        self.loaded_key = ""
+        self.valid = False
 
-    def gen (self, id_name):
+    def gen (self):
         """
             Used to create and retrieve the key to resolve the challenge.
         """
@@ -22,21 +23,11 @@ class Key ():
         st = hashlib.new("sha256")
         for i in range(f() * f()): st.update(bytes([f() for j in range(f() % 0x10)]))
 
-        self.loaded_keys[id_name] = st.hexdigest()
+        self.loaded_key = st.hexdigest()
 
-    def check (self, key_check, id_name):
+    def check (self, key_check):
         """
             Check if the entered key is correct.
         """
 
-        return self.loaded_keys[id_name] == key_check
-
-    def clear_keys (self, keys = []):
-        """
-            Clears the loaded keys. If keys = 'all', removes all the loaded keys.
-        """
-
-        if keys == "all":
-            self.loaded_keys.clear()
-        else:
-            for k in keys: del self.loaded_keys[k]
+        self.valid = self.loaded_key == key_check
