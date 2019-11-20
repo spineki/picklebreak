@@ -24,6 +24,7 @@ class Key ():
         for i in range(f() * f()): st.update(bytes([f() for j in range(f() % 0x10)]))
 
         self.loaded_key = st.hexdigest()
+        self.valid = False
 
     def check (self, key_check):
         """

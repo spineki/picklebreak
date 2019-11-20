@@ -4,7 +4,6 @@
 
 import importlib
 import json
-import os
 
 LEVELS_FILE = "src/res/levels/levels.json"
 
@@ -44,6 +43,7 @@ class Level ():
         for h in json_data["hints"]:
             e = (h["type"], h["data"])
             self.hints.append(e)
+
 
 def load_level (level):
     """

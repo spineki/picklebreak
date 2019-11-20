@@ -25,10 +25,10 @@ class Challenge ():
             Reset function called on first load, refresh and pre-code execution.
         """
 
-        self.key.gen(self.level.name)
+        self.key.gen()
 
         ext_hints = [h[1] for h in self.level.hints]
-        self.new_hints, self.new_scripts, self.objs = self.level.gen(self.key.get_key(self.level.name), ext_hints, self.level.scripts)
+        self.new_hints, self.new_scripts, self.objs = self.level.gen(self.key.get_key(), ext_hints, self.level.scripts)
 
         parsed = [(self.level.hints[i][0], self.new_hints[i]) for i in range(len(self.level.hints))]
         self.win_frame.update(parsed, self.new_scripts)
