@@ -85,7 +85,7 @@
     },
     "2_hex": {
         "id": "2_hex",
-        "next": "",
+        "next": "3_reversed",
         "backend": "2_hex",
         "scripts": [
             "# Now it's an integer ...",
@@ -100,6 +100,27 @@
             }, {
                 "type": "img",
                 "data": "./loaded/2_pic.jpg"
+            }
+        ]
+    },
+
+        "3_reversed": {
+        "id": "3_reversed",
+        "next": "",
+        "backend": "3_reversed",
+        "scripts": [
+            "# Reversed?",
+            "h = \"{}\"",
+            ""
+        ],
+        "imports": [],
+        "hints": [
+            {
+                "type": "txt",
+                "data": "Level 3: Reversed."
+            }, {
+                "type": "img",
+                "data": "./loaded/1_pic.jpg"
             }
         ]
     }
