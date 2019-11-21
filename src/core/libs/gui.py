@@ -79,7 +79,7 @@ class Application(tk.Frame):
             None
         """
         self.notepad_scrollbar= tk.Scrollbar(self.game_frame_notepad,orient="vertical")
-        self.master_text = tk.Text(self.game_frame_notepad,bg="gray50", width=70)
+        self.master_text = tk.Text(self.game_frame_notepad,bg="gray50", width=100)
         self.notepad_scrollbar.config(command=self.master_text.yview)
         self.master_text.config(yscrollcommand=self.notepad_scrollbar.set)
         self.notepad_scrollbar.pack(side="right",fill="y")
@@ -153,14 +153,14 @@ class Application(tk.Frame):
                 self.notepad_list[i].destroy()
                 
             if notepad_list[i] != "":
-                self.notepad_list[i] = tk.Text(self.master_text, bg="tomato", fg="white", height = notepad_list[i].count("\n") + 1)
+                self.notepad_list[i] = tk.Text(self.master_text, bg="tomato", fg="white", height = notepad_list[i].count("\n") + 1, width = 100)
                 self.notepad_list[i].insert("end", notepad_list[i])
                 #Adaptation of the size of the text zone depending on the text insert into it
                 self.notepad_list[i].config(height = self.notepad_list[i].get("1.0", "end").count("\n"))
                 self.notepad_list[i].config(state="disabled")
                 
             elif self.notepad_list[i] == 0:
-                self.notepad_list[i] = tk.Text(self.master_text, bg="white", fg="black", height=2)
+                self.notepad_list[i] = tk.Text(self.master_text, bg="white", fg="black", height=2, width = 100)
                 self.notepad_list[i].insert("end", "")
                 self.notepad_list[i].bind("<KeyRelease>", resize)
                 

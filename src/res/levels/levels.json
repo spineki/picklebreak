@@ -16,7 +16,6 @@
             }
         ]
     },
-
     "default2": {
         "id": "default2",
         "next": "default",
@@ -31,6 +30,67 @@
             {
                 "type": "txt",
                 "data": "WOW!!! The key is not {}"
+            }
+        ]
+    },
+    "0_the_basics": {
+        "id": "0_the_basics",
+        "next": "1_halfed",
+        "backend": "0_the_basics",
+        "scripts": [
+            "# Welcome to PickleBreak. Learn a large component",
+            "# of python functions and libraries by resolving challenges.",
+            "# The goal is to retrieve a 64-key like this one:",
+            "# {}",
+            "# Pressing reset will regenerate all key-based elements",
+            "# whereas execute will reset and run your code.",
+            " ",
+            "# To send your answer, just call send_key like:",
+            "# send_key(key)",
+            "# Here, just try it, the key is right there.",
+            "s = \"{}\"",
+            ""
+        ],
+        "imports": [],
+        "hints": [
+            {
+                "type": "txt",
+                "data": "Level 0: The Basics."
+            }
+        ]
+    },
+    "1_halfed": {
+        "id": "1_halfed",
+        "next": "2_hex",
+        "backend": "1_halfed",
+        "scripts": [
+            "# Can you get this one?",
+            "h1 = \"{}\"",
+            "h2 = \"{}\"",
+            ""
+        ],
+        "imports": [],
+        "hints": [
+            {
+                "type": "txt",
+                "data": "Level 1: Halfed."
+            }
+        ]
+    },
+    "2_hex": {
+        "id": "2_hex",
+        "next": "",
+        "backend": "2_hex",
+        "scripts": [
+            "# Now it's an integer ...",
+            "h = {}",
+            ""
+        ],
+        "imports": [],
+        "hints": [
+            {
+                "type": "txt",
+                "data": "Level 2: Hex."
             }
         ]
     }
