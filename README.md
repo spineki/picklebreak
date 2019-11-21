@@ -1,4 +1,4 @@
-PickleBreak: A Centrale-Supelec project
+PickleBreak: A CentraleSupélec project
 =
 A python software designed to challenge your python skills on python puzzles (that's a lot of python).
 

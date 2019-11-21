@@ -123,5 +123,30 @@
             "type": "img",
             "data": "./loaded/html0.jpg"
         }]
+    },
+    "image_encoded": {
+        "id": "image_encode",
+        "next": "",
+        "backend": "image_encode",
+        "scripts": [
+            "# Something might be hiden in those pickles",
+            "from PIL import Image",
+            "import numpy as np",
+            "img = Image.open(\"./loaded/encoded.png\")",
+            ""
+        ],
+        "imports": ["PIL.Image", "numpy"],
+        "hints": [
+            {
+                "type": "txt",
+                "data": "Level ?: Encoded image."
+            }, {
+                "type": "img",
+                "data": "./loaded/encoded.png"
+            }, {
+                "type": "txt",
+                "data": "Wow those pickles look 10 times brighter than usual"
+            }
+        ]
     }
 }
