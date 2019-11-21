@@ -246,7 +246,7 @@ class Application(tk.Frame):
             None
         """
         self.output_text.config(state="normal")
-        self.output_text.insert("end", text)
+        self.output_text.insert("end", text+"\n")
         self.output_text.config(state="disabled")
 
     def get_script(self):
