@@ -115,14 +115,19 @@
             "h = client.HTTPConnection(\"{}:{}\")",
             ""
         ],
-        "imports": ["http.client"],
-        "hints": [{
-            "type": "txt",
-            "data": "Level _: Basic web browser."
-        }, {
-            "type": "img",
-            "data": "./loaded/html0.jpg"
-        }]
+        "imports": [
+            "http.client"
+        ],
+        "hints": [
+            {
+                "type": "txt",
+                "data": "Level _: Basic web browser."
+            },
+            {
+                "type": "img",
+                "data": "./loaded/html0.jpg"
+            }
+        ]
     },
     "image_encoded": {
         "id": "image_encode",
@@ -135,17 +140,41 @@
             "img = Image.open(\"./loaded/encoded.png\")",
             ""
         ],
-        "imports": ["PIL.Image", "numpy"],
+        "imports": [
+            "PIL.Image",
+            "numpy"
+        ],
         "hints": [
             {
                 "type": "txt",
                 "data": "Level ?: Encoded image."
-            }, {
+            },
+            {
                 "type": "img",
                 "data": "./loaded/encoded.png"
-            }, {
+            },
+            {
                 "type": "txt",
                 "data": "Wow those pickles look 10 times brighter than usual"
+            }
+        ]
+    },
+    "pickle_origin": {
+        "id": "pickle_origin",
+        "next": "",
+        "backend": "pickle_origin",
+        "scripts": [
+            ""
+        ],
+        "imports": ["pickle"],
+        "hints": [
+            {
+                "type": "txt",
+                "data": "Level _: Pickle jar."
+            },
+            {
+                "type": "img",
+                "data": "./loaded/pickle.jpg"
             }
         ]
     }
