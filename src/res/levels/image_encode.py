@@ -18,10 +18,8 @@ def gen (key, hints_data, scripts):
                 for h in range(10):
                     np_img[h][i*10+ofset][c] = int(key[i], 16)*10
 
-    
     img = Image.fromarray(np_img)
-    
-
+  
     if path.isdir("./loaded"):
         rmtree("./loaded")
     
