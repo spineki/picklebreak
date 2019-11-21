@@ -138,7 +138,7 @@ class Application(tk.Frame):
         RETURN:
             None
         """
-
+        #This function will resize the mutable text zone when the Enter, Ctrl, Del or Backspace key is release by the user
         def resize (event):
             widget = event.widget
             key_enter = event.keycode
@@ -152,6 +152,8 @@ class Application(tk.Frame):
             if notepad_list[i] != "":
                 self.notepad_list[i] = tk.Text(self.master_text, bg="tomato", fg="white", height=2)
                 self.notepad_list[i].insert("end", notepad_list[i])
+                #Adaptation of the size of the text zone depending on the text insert into it
+                self.notepad_list[i].config(height = self.notepad_list[i].get("1.0", "end").count("\n"))
                 self.notepad_list[i].config(state="disabled")
             elif self.notepad_list[i] == 0:
                 self.notepad_list[i] = tk.Text(self.master_text, bg="white", fg="black", height=2)
@@ -297,7 +299,7 @@ def test_Application(list_notepad_list, list_hint_list):
     root.mainloop()
 
 if __name__ == '__main__':
-    list_notepad_list = ["Coucou, c'est el level1","","Tu peux écrire?", "", "", "", "", "", ""]
+    list_notepad_list = ["Coucou, c'est el level1\n\nBonne chance","","Tu peux écrire?", "", "", "", "", "", ""]
     list_hint_list = [("txt","Salut gérard"), ("img","./src/res/pickle.png")]
     list_notepad_list2 = ["Level2", ""]
     list_hint_list2 = [("img","./src/res/pickle_in_prison.png")]
