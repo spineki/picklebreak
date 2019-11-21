@@ -25,7 +25,7 @@ def gen (key, hints_data, scripts):
     
     mkdir("./loaded")
     
-    img.save("./loaded/encoded.jpg")
+    img.save("./loaded/encoded.png")
     
     
     new_s[:-1] = ["\n".join(new_s[:-1])]

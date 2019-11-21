@@ -108,9 +108,10 @@
         "next": "",
         "backend": "image_encode",
         "scripts": [
-            "# Something might be hide in those pickles",
+            "# Something might be hiden in those pickles",
             "from PIL import Image",
             "import numpy as np",
+            "img = Image.open(\"./loaded/encoded.png\")",
             ""
         ],
         "imports": ["PIL.Image", "numpy"],
@@ -120,7 +121,7 @@
                 "data": "Level ?: Encoded image."
             }, {
                 "type": "img",
-                "data": "./loaded/encoded.jpg"
+                "data": "./loaded/encoded.png"
             }, {
                 "type": "txt",
                 "data": "Wow those pickles look 10 times brighter than usual"
