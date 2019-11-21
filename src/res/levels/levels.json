@@ -102,5 +102,28 @@
                 "data": "./loaded/2_pic.jpg"
             }
         ]
-    }
-}
+    },
+    "image_encoded": {
+        "id": "image_encode",
+        "next": "",
+        "backend": "image_encode",
+        "scripts": [
+            "# Something might be hide in those pickles",
+            "from PIL import Image",
+            "import numpy as np",
+            ""
+        ],
+        "imports": ["PIL.Image", "numpy"],
+        "hints": [
+            {
+                "type": "txt",
+                "data": "Level ?: Encoded image."
+            }, {
+                "type": "img",
+                "data": "./loaded/encoded.jpg"
+            }, {
+                "type": "txt",
+                "data": "Wow those pickles look 10 times brighter than usual"
+            }
+        ]
+}}
