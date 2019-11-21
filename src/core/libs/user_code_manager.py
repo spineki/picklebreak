@@ -15,7 +15,7 @@ FROM_SPLIT = r"[ \t]+import[ \t]+"
 class Executer ():
 
     def __init__ (self):
-        pass
+        self.script = ""
 
     def set_script (self, script):
         self.script = script + "\n"
