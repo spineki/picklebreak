@@ -21,6 +21,7 @@ class Challenge ():
 
         parsed = [(self.level.hints[i][0], self.new_hints[i]) for i in range(len(self.level.hints))]
         self.app.turbo_init_level(parsed, self.new_scripts)
+        self.level.close(self.key.get_key(), self.objs)
     
     def reset (self):
         """
