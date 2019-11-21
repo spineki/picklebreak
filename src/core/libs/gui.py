@@ -205,7 +205,14 @@ class Application(tk.Frame):
                 self.hint_list[count]=tk.Label(self.game_frame_hint, text=hint[1])
                 self.hint_list[count].pack(fill="both")
             elif hint[0]=="img" and isinstance(hint[1], str):
-                img = ImageTk.PhotoImage(Image.open(hint[1]))
+                #Resize the hint image in order to have always the same picture size printed
+                raw_img = Image.open(hint[1])
+                wished_width = 700
+                wpercent = (wished_width/float(raw_img.size[0]))
+                hsize = int(float(raw_img.size[1]) * float(wpercent))
+                raw_img = raw_img.resize((int(wished_width), hsize), Image.ANTIALIAS)
+
+                img = ImageTk.PhotoImage(raw_img)
                 self.hint_list[count]=tk.Label(self.game_frame_hint, image=img)
                 self.hint_list[count].image = img
                 self.hint_list[count].pack()
