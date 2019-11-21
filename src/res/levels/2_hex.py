@@ -1,5 +1,15 @@
+from os import path, mkdir
+from shutil import rmtree, copyfile
+
 def gen (key, hints_data, scripts):
     new_s = scripts.copy()
+    
+    if path.isdir("./loaded"):
+        rmtree("./loaded")
+    
+    mkdir("./loaded")
+    
+    copyfile("./src/res/images/2_pic.jpg", hints_data[1])
     
     new_s[1] = new_s[1].format(int(key, 16))
     

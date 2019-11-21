@@ -56,6 +56,9 @@
             {
                 "type": "txt",
                 "data": "Level 0: The Basics."
+            }, {
+                "type": "img",
+                "data": "./loaded/0_pic.jpg"
             }
         ]
     },
@@ -74,6 +77,9 @@
             {
                 "type": "txt",
                 "data": "Level 1: Halfed."
+            }, {
+                "type": "img",
+                "data": "./loaded/1_pic.jpg"
             }
         ]
     },
@@ -91,6 +97,9 @@
             {
                 "type": "txt",
                 "data": "Level 2: Hex."
+            }, {
+                "type": "img",
+                "data": "./loaded/2_pic.jpg"
             }
         ]
     }
