@@ -114,7 +114,15 @@ class Level ():
             json.dump(dic, f, indent=4)
 
 class LevelFile():
+    """
+    class easier to use than the Level class to create new levels since to create a new Level we had to
+    input a level name. To create a level juste write:
 
+    a = LevelFile()
+    a.write("new_level_name")
+
+    This creates the level "new_level_name".
+    """
     def __init__(self,levels_file = LEVELS_FILE):
         self.filename = levels_file
         with open(levels_file, 'r') as f:
