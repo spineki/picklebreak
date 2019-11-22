@@ -149,7 +149,7 @@
             }
         ]
     },
-    "image_encoded": {
+    "image_encode": {
         "id": "image_encode",
         "next": "evil_prime",
         "backend": "image_encode",

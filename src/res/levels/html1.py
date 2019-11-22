@@ -2,7 +2,7 @@ from os import path, mkdir
 from shutil import rmtree, copyfile
 from http import server
 import hashlib
-from random import choice, random
+from random import choice, random, shuffle
 
 from time import time_ns
 
@@ -19,7 +19,9 @@ class HTTPRequestHandler (server.SimpleHTTPRequestHandler):
         if data == [""]:
             self.send_response(200)
             self.end_headers()
-            self.wfile.write(bytes("\n".join(WEBTREE.keys()), encoding = "UTF-8"))
+            a = list(WEBTREE.keys())
+            shuffle(a)
+            self.wfile.write(bytes("\n".join(a), encoding = "UTF-8"))
         else:
             if data[0] not in WEBTREE:
                 self.send_response(404)
@@ -28,7 +30,9 @@ class HTTPRequestHandler (server.SimpleHTTPRequestHandler):
             elif len(data) == 1:
                 self.send_response(200)
                 self.end_headers()
-                self.wfile.write(bytes("\n".join(WEBTREE[data[0]].keys()), encoding = "UTF-8"))
+                a = list(WEBTREE[data[0]].keys())
+                shuffle(a)
+                self.wfile.write(bytes("\n".join(a), encoding = "UTF-8"))
             else:
                 if data[1] not in WEBTREE[data[0]]:
                     self.send_response(404)
@@ -37,7 +41,9 @@ class HTTPRequestHandler (server.SimpleHTTPRequestHandler):
                 elif len(data) == 2:
                     self.send_response(200)
                     self.end_headers()
-                    self.wfile.write(bytes("\n".join(WEBTREE[data[0]][data[1]].keys()), encoding = "UTF-8"))
+                    a = list(WEBTREE[data[0]][data[1]].keys())
+                    shuffle(a)
+                    self.wfile.write(bytes("\n".join(a), encoding = "UTF-8"))
                 else:
                     if data[2] not in WEBTREE[data[0]][data[1]]:
                         self.send_response(404)
@@ -46,7 +52,9 @@ class HTTPRequestHandler (server.SimpleHTTPRequestHandler):
                     elif len(data) == 3:
                         self.send_response(200)
                         self.end_headers()
-                        self.wfile.write(bytes("\n".join(WEBTREE[data[0]][data[1]][data[2]].keys()), encoding = "UTF-8"))
+                        a = list(WEBTREE[data[0]][data[1]][data[2]].keys())
+                        shuffle(a)
+                        self.wfile.write(bytes("\n".join(a), encoding = "UTF-8"))
                     else:
                         if data[3] not in WEBTREE[data[0]][data[1]][data[2]]:
                             self.send_response(404)
