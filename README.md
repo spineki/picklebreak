@@ -14,11 +14,6 @@ If necessary, a nice Wiki is [here](https://github.com/spineki/picklebreak/wiki)
 
 Run picklebreak.py with python (E.G: type __python picklebreak.py__ in your terminal)
 
-*** 
-
-If you want to know more about this project, please take a look at our wiki : https://github.com/spineki/picklebreak/wiki
-    
-
 
 ## Authors:
 - [Yohann Bosqued](https://github.com/Mrlag31)
