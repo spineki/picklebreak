@@ -16,7 +16,7 @@ Run picklebreak.py with python (E.G: type __python picklebreak.py__ in your term
 
 *** 
 
-If you want to know more about this project, please took a look at our wiki : https://github.com/spineki/picklebreak/wiki
+If you want to know more about this project, please take a look at our wiki : https://github.com/spineki/picklebreak/wiki
     
 
 
