@@ -10,7 +10,7 @@ def gen(key, hints_data, scripts):
 
     mkdir("./loaded")
 
-    copyfile("./src/res/images/evil_prime.png", hints_data[2])
+    copyfile("./src/res/images/evil_prime.png", hints_data[3])
     new_key = 4973 * int(key,16)
     new_s[2] = new_s[2].format(new_key)
 
