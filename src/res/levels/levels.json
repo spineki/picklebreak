@@ -201,7 +201,7 @@
     },
     "the_key": {
         "id": "the_key",
-        "next": "",
+        "next": "evil_prime",
         "backend": "the_key",
         "scripts": [
             "#The answer is simply: \"key\" ...",
@@ -222,5 +222,35 @@
                 "data": "./loaded/15_pic.jpg"
             }
         ]
-    }
+    },
+    "evil_prime": {
+        "id": "evil_prime",
+        "next": "",
+        "backend": "evil_prime",
+        "scripts": [
+            "#Let's deal with the devil.",
+            "#The key given is too evil, maybe try to reduce it?",
+            "key = \"{}\"",
+            ""
+            ],
+            "imports": [],
+            "hints": [
+                {
+                    "type": "txt",
+                    "data": "Try to divide the key by the evilest prime number"
+                },
+                {
+                    "type": "txt",
+                    "data": "Just remember the initial key is an hexadecimal one"
+                },
+                {
+                    "type": "img",
+                    "data": "./loaded/evil_prime.png"
+                },
+                {
+                    "type": "txt",
+                    "data": "and don't forget to get rid of the hexadecimal 0x!!"
+                }
+            ]
+        }
 }
