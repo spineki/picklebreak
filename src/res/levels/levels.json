@@ -166,6 +166,20 @@
         "scripts": [
             "#This might be a great salad",
             "this = \"{}\"",
+            ""
+            ],
+            "imports": [],
+            "hints": [
+                {
+                    "type": "txt",
+                    "data": "Level _: What a mess"
+                },
+                {
+                    "type": "img",
+                    "data": "./loaded/caesar.jpg"
+                }
+            ]
+        },
     "pickle_origin": {
         "id": "pickle_origin",
         "next": "",
@@ -209,4 +223,4 @@
             }
         ]
     }
-}
+}}
