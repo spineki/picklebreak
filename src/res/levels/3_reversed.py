@@ -10,7 +10,7 @@ def gen(key, hints_data, scripts):
 
     mkdir("./loaded")
 
-    copyfile("./src/res/images/3_pic.jpg", hints_data[1])
+    copyfile("./src/res/images/reversed_pic.jpg", hints_data[1])
 
     new_s[1] = new_s[1].format(key[::-1])
     new_s[:-1] = ["\n".join(new_s[:-1])]
