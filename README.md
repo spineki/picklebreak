@@ -1,4 +1,4 @@
-PickleBreak: A Centrale-Supelec project
+PickleBreak: A CentraleSupélec project
 =
 A python software designed to challenge your python skills on python puzzles (that's a lot of python).
 
@@ -11,18 +11,11 @@ A python software designed to challenge your python skills on python puzzles (th
 
 # Launch the game
 
-run picklebreak.py with python (E.G: type __python picklebreak.py__ in your terminal)
+Run picklebreak.py with python (E.G: type __python picklebreak.py__ in your terminal)
 
 ## Create a new level
 ### Init a level
-- In the level_manager.py file (src.core.libs.level_manager.py), use the [write_level](src/core/libs/level_manager.py) function
-- The function takes 2 arguments:
-    * level: (default None). the number of the level that need to be created.\
-    If no number is given, a new level is create before every level, that are incremented by one level.  
-    Example: (new_0, new_1)-> write_level()-> (new_0,new_1, new_2)  where new_1 is the previous new_0.
-    * backend_file(default None). path to a backend file that will handle key creation, clean socket, file closure...
-    
-    The newly created level is finally saved in the [levels.json file.](src/res/levels/levels.json)
+Just run __python picklebreak.py -n X__ and it will create in [levels.json](src/res/levels/levels.json) X empty levels.
 
 ### Modify Level  
 The Level is a dictionary in the levels.json. Here's an example
@@ -59,12 +52,13 @@ We need to fill:
 
 -__"next"__: id of the next level  
 
--__"backend"__: the backend file that will produce the key  
+-__"backend"__: the backend file that will control the generation of objects and their closing
 
 -__"script"__: a list of string that will be displayed on the notepad part.  
      
      - empty string "" creates a writable field for the user (do not forget it!!)
      - other strings will create an instruction field, immutable  
+
 -__"import"__: list of authorized imports
 
 -__"hints:"__ a list of dictionary that contains
@@ -104,9 +98,9 @@ Here's an example:
 
 
 ## Authors:
-- [Yohann Bosqued]
+- [Yohann Bosqued](https://github.com/Mrlag31)
 - [Remon Majoor](https://github.com/Remon-prog)
-- [Alexandre LeBian]
+- [Alexandre LeBian](https://github.com/alex-lb33)
 - [Victor Collodel]
 - [Antoine Marras](https://github.com/spineki)
 
