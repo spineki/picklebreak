@@ -12,8 +12,7 @@ If necessary, a nice Wiki is [here](https://github.com/spineki/picklebreak/wiki)
 
 # Launch the game
 
-Run picklebreak.py with python (E.G: type __python picklebreak.py__ in your terminal)
-
+Run picklebreak.py with python (E.G: type __python picklebreak.py__ in your terminal.
 
 ## Authors:
 - [Yohann Bosqued](https://github.com/Mrlag31)
