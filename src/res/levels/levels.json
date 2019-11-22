@@ -127,4 +127,24 @@
                 "data": "Wow those pickles look 10 times brighter than usual"
             }
         ]
-}}
+    },
+    "caesar": {
+        "id": "caesar",
+        "next": "",
+        "backend": "caesar",
+        "scripts": [
+            "#This might be a great salad",
+            "this = \"{}\"",
+            ""
+        ],
+        "imports": [],
+        "hints": [
+            {
+                "type": "txt",
+                "data": "Level ?: Hidden code"
+            }, {
+                "type": "img",
+                "data": "./loaded/encoded.png"
+            }
+        ]
+    }}
