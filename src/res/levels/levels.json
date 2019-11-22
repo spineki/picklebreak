@@ -87,7 +87,7 @@
     },
     "2_hex": {
         "id": "2_hex",
-        "next": "",
+        "next": "3_reversed",
         "backend": "2_hex",
         "scripts": [
             "# Now it's an integer ...",
@@ -103,6 +103,26 @@
             {
                 "type": "img",
                 "data": "./loaded/2_pic.jpg"
+            }
+        ]
+    },
+    "3_reversed": {
+        "id": "3_reversed",
+        "next": "",
+        "backend": "3_reversed",
+        "scripts": [
+            "# Reversed?",
+            "h = \"{}\"",
+            ""
+        ],
+        "imports": [],
+        "hints": [
+            {
+                "type": "txt",
+                "data": "Level 3: Reversed."
+            }, {
+                "type": "img",
+                "data": "./loaded/1_pic.jpg"
             }
         ]
     },
@@ -187,7 +207,9 @@
         "scripts": [
             ""
         ],
-        "imports": ["pickle"],
+        "imports": [
+            "pickle"
+        ],
         "hints": [
             {
                 "type": "txt",
@@ -199,27 +221,24 @@
             }
         ]
     },
-    "the_key": {
-        "id": "the_key",
-        "next": "evil_prime",
-        "backend": "the_key",
+    "html1": {
+        "id": "html1",
+        "next": "",
+        "backend": "html1",
         "scripts": [
-            "#The answer is simply: \"key\" ...",
-            "#... or maybe it is not that simple.",
-            "#Try to use the imports !",
-            "import hashlib",
-            "the_key = \"key\"",
+            "from http import client",
+            "h = client.HTTPConnection(\"{}:{}\")",
             ""
         ],
-        "imports": [],
+        "imports": ["http.client"],
         "hints": [
             {
                 "type": "txt",
-                "data": "Level 15: The Key."
+                "data": "Level _: Tree."
             },
             {
                 "type": "img",
-                "data": "./loaded/15_pic.jpg"
+                "data": "./loaded/html1.jpg"
             }
         ]
     },
