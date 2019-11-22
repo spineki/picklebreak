@@ -18,8 +18,8 @@ Run picklebreak.py with python (E.G: type __python picklebreak.py__ in your term
 ## Authors:
 - [Yohann Bosqued](https://github.com/Mrlag31)
 - [Remon Majoor](https://github.com/Remon-prog)
-- [Alexandre LeBian](https://github.com/alex-lb33)
-- [Victor Collodel]
+- [Alexandre Le Bian](https://github.com/alex-lb33)
+- [Victor Collodel](https://github.com/Qwen7)
 - [Antoine Marras](https://github.com/spineki)
 
 ### Supervised by: 
