@@ -1,6 +1,7 @@
 PickleBreak: A CentraleSupélec project
 =
 A python software designed to challenge your python skills on python puzzles (that's a lot of python).
+If necessary, a nice Wiki is [here](https://github.com/spineki/picklebreak/wiki), written just for you!
 
 ## Install requirements
 - Python is installed on your computer
