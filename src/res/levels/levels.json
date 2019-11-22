@@ -159,6 +159,13 @@
             }
         ]
     },
+    "caesar": {
+        "id": "caesar",
+        "next": "",
+        "backend": "caesar",
+        "scripts": [
+            "#This might be a great salad",
+            "this = \"{}\"",
     "pickle_origin": {
         "id": "pickle_origin",
         "next": "",
