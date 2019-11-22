@@ -7,6 +7,7 @@ class Save ():
 
     def __init__ (self, default, filename = SAVE_FILE):
         self.save_dict = {}
+        self.file = filename
 
         if not p.isfile(filename):
             self.save_dict = {"level": default}
@@ -19,7 +20,7 @@ class Save ():
     
     def setter (self, val):
         self.save_dict["level"] = val
-        self.save()
+        self.save(filename = self.file)
     
     def save (self, filename = SAVE_FILE):
         with open(filename, 'w') as f:

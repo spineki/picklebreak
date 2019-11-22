@@ -7,9 +7,9 @@ Thus, it aims to be an open source project and any help will be welcomed!
 
 # What's the architecture of the project?
 This project is a 3-part software:
-- Window: This part deals with the GUI, displaying text to the user and gathering written code.
-- Level_loader: This part loads json levels automatically
-- Core:  This part creates connexion between backend and frontend. There, the user's code is tested, executed.
+- gui: This part deals with the GUI, displaying text to the user and gathering written code.
+- ***_manager: This part controls the backend of the game.
+- Core: This part creates connexion between backend and frontend. There, the user's code is tested, executed.
 
 
 # How can I contribute?

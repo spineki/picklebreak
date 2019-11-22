@@ -62,9 +62,9 @@ class Application(tk.Frame):
         RETURN:
             None
         """
-        self.game_frame_hint = tk.Frame(self.master, width=300, height=200, bg="red")
-        self.game_frame_notepad = tk.Frame(self.master, width=300, height=200, bg="yellow")
-        self.game_frame_output = tk.Frame(self.master, bg="black", height=200)
+        self.game_frame_hint = tk.Frame(self.master, width=300, height=200, bg="black", highlightthickness=0, borderwidth=0)
+        self.game_frame_notepad = tk.Frame(self.master, width=300, height=200, bg="black", highlightthickness=0, borderwidth=0)
+        self.game_frame_output = tk.Frame(self.master, bg="black", height=400, highlightthickness=0, borderwidth=0)
         self.game_frame_hint.grid(row=0, column=0, sticky="nesw")
         self.game_frame_notepad.grid(row=0, column=1, sticky='nesw')
         self.game_frame_output.grid(row=1, column=0, columnspan=2, sticky ="nesw")
@@ -79,13 +79,13 @@ class Application(tk.Frame):
             None
         """
         self.notepad_scrollbar= tk.Scrollbar(self.game_frame_notepad,orient="vertical")
-        self.master_text = tk.Text(self.game_frame_notepad,bg="gray50", width=100)
+        self.master_text = tk.Text(self.game_frame_notepad,bg="white", width=85, highlightthickness=0, borderwidth=0)
         self.notepad_scrollbar.config(command=self.master_text.yview)
         self.master_text.config(yscrollcommand=self.notepad_scrollbar.set)
         self.notepad_scrollbar.pack(side="right",fill="y")
         self.master_text.pack()
 
-        in_frame = tk.Frame(self.game_frame_notepad, bg = "yellow")
+        in_frame = tk.Frame(self.game_frame_notepad, bg = "black")
         self.btn_exec = tk.Button(in_frame, text="Execute", fg='black')
         self.btn_reset = tk.Button(in_frame, text="Reset", fg='black')
         self.btn_exec.pack(side= "right", padx = 15, pady = 10)
@@ -110,7 +110,7 @@ class Application(tk.Frame):
         RETURN:
             None
         """
-        self.output_text = tk.Text(self.game_frame_output, bg="black", fg="white", height = 10)
+        self.output_text = tk.Text(self.game_frame_output, bg="black", fg="white", height = 15, highlightthickness=0, borderwidth=0)
         self.output_text.config(state="disabled")
         self.output_text.pack()
 
@@ -202,7 +202,7 @@ class Application(tk.Frame):
             if self.hint_list[count] != 0:
                 self.hint_list[count].destroy()
             if hint[0]=="txt":
-                self.hint_list[count]=tk.Label(self.game_frame_hint, text=hint[1])
+                self.hint_list[count]=tk.Label(self.game_frame_hint, text=hint[1], highlightthickness=0, borderwidth=0)
                 self.hint_list[count].pack(fill="both")
             elif hint[0]=="img" and isinstance(hint[1], str):
                 #Resize the hint image in order to have always the same picture size printed
@@ -211,14 +211,18 @@ class Application(tk.Frame):
                 wpercent = (wished_width/float(raw_img.size[0]))
                 hsize = int(float(raw_img.size[1]) * float(wpercent))
                 raw_img = raw_img.resize((int(wished_width), hsize), Image.ANTIALIAS)
-
                 img = ImageTk.PhotoImage(raw_img)
-                self.hint_list[count]=tk.Label(self.game_frame_hint, image=img)
+                self.hint_list[count]=tk.Label(self.game_frame_hint, image=img, highlightthickness=0, borderwidth=0)
                 self.hint_list[count].image = img
                 self.hint_list[count].pack()
             elif hint[0]=="img" and isinstance(hint[1], Image.Image):
-                img = ImageTk.PhotoImage(hint[1])
-                self.hint_list[count]=tk.Label(self.game_frame_hint, image=img)
+                raw_img = hint[1]
+                wished_width = 700
+                wpercent = (wished_width/float(raw_img.size[0]))
+                hsize = int(float(raw_img.size[1]) * float(wpercent))
+                raw_img = raw_img.resize((int(wished_width), hsize), Image.ANTIALIAS)
+                img = ImageTk.PhotoImage(raw_img)
+                self.hint_list[count]=tk.Label(self.game_frame_hint, image=img, highlightthickness=0, borderwidth=0)
                 self.hint_list[count].image = img
                 self.hint_list[count].pack()
             count+=1
@@ -246,7 +250,7 @@ class Application(tk.Frame):
             None
         """
         self.output_text.config(state="normal")
-        self.output_text.insert("end", text)
+        self.output_text.insert("end", text+"\n")
         self.output_text.config(state="disabled")
 
     def get_script(self):

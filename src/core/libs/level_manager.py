@@ -42,8 +42,10 @@ class Level ():
         self.next = json_data["next"]
         self.imports = json_data["imports"]
         self.scripts = json_data["scripts"]
-
-        backend_import = importlib.import_module("src.res.levels." + json_data["backend"])
+        try:
+            backend_import = importlib.import_module("src.res.levels." + json_data["backend"])
+        except ModuleNotFoundError:
+            backend_import = importlib.import_module("res.levels." + json_data["backend"],"src")
         self.gen = backend_import.gen
         self.close = backend_import.close
         
@@ -110,3 +112,55 @@ class Level ():
 
         with open(LEVELS_FILE, 'w') as f:
             json.dump(dic, f, indent=4)
+
+class LevelFile():
+
+    def __init__(self,levels_file = LEVELS_FILE):
+        self.filename = levels_file
+        with open(levels_file, 'r') as f:
+            self.content = json.load(f)
+        self.list_levels = list(self.content.keys())
+        self.levels = []
+        for level in self.list_levels:
+            self.levels.append(Level(level))
+
+    @staticmethod
+    def write (level_name,level = None, backend_file = None, levels_file = LEVELS_FILE):
+        """
+            Write a new level to the json. Creates an empty one if no args are passed
+        """
+
+        with open(levels_file, 'r') as f:
+            dic = json.load(f)
+
+        if level == None: # Create a new level if level == None
+
+            new_name = level_name
+
+            dic[new_name] = {
+                "id": new_name,
+                "next": "",
+                "backend": "",
+                "scripts": [""],
+                "imports": [],
+                "hints": []
+            }
+
+        else:
+            dic[level.name] = {
+                "id": level.name,
+                "next": level.next,
+                "backend": backend_file,
+                "scripts": level.scripts,
+                "imports": level.imports,
+                "hints": [
+                    {
+                        "type": h[0],
+                        "data": h[1]
+                    } for h in level.hints
+                ]
+            }
+        
+        with open(levels_file, 'w') as f:
+            json.dump(dic, f, indent=4)
+        

@@ -56,7 +56,8 @@
             {
                 "type": "txt",
                 "data": "Level 0: The Basics."
-            }, {
+            },
+            {
                 "type": "img",
                 "data": "./loaded/0_pic.jpg"
             }
@@ -77,7 +78,8 @@
             {
                 "type": "txt",
                 "data": "Level 1: Halfed."
-            }, {
+            },
+            {
                 "type": "img",
                 "data": "./loaded/1_pic.jpg"
             }
@@ -97,14 +99,14 @@
             {
                 "type": "txt",
                 "data": "Level 2: Hex."
-            }, {
+            },
+            {
                 "type": "img",
                 "data": "./loaded/2_pic.jpg"
             }
         ]
     },
-
-        "3_reversed": {
+    "3_reversed": {
         "id": "3_reversed",
         "next": "",
         "backend": "3_reversed",
@@ -121,6 +123,99 @@
             }, {
                 "type": "img",
                 "data": "./loaded/1_pic.jpg"
+            }
+        ]
+    },
+    "html0": {
+        "id": "html0",
+        "next": "",
+        "backend": "html0",
+        "scripts": [
+            "from http import client",
+            "h = client.HTTPConnection(\"{}:{}\")",
+            ""
+        ],
+        "imports": [
+            "http.client"
+        ],
+        "hints": [
+            {
+                "type": "txt",
+                "data": "Level _: Basic web browser."
+            },
+            {
+                "type": "img",
+                "data": "./loaded/html0.jpg"
+            }
+        ]
+    },
+    "image_encoded": {
+        "id": "image_encode",
+        "next": "",
+        "backend": "image_encode",
+        "scripts": [
+            "# Something might be hiden in those pickles",
+            "from PIL import Image",
+            "import numpy as np",
+            "img = Image.open(\"./loaded/encoded.png\")",
+            ""
+        ],
+        "imports": [
+            "PIL.Image",
+            "numpy"
+        ],
+        "hints": [
+            {
+                "type": "txt",
+                "data": "Level ?: Encoded image."
+            },
+            {
+                "type": "img",
+                "data": "./loaded/encoded.png"
+            },
+            {
+                "type": "txt",
+                "data": "Wow those pickles look 10 times brighter than usual"
+            }
+        ]
+    },
+    "caesar": {
+        "id": "caesar",
+        "next": "",
+        "backend": "caesar",
+        "scripts": [
+            "#This might be a great salad",
+            "this = \"{}\"",
+            ""
+            ],
+            "imports": [],
+            "hints": [
+                {
+                    "type": "txt",
+                    "data": "Level _: What a mess"
+                },
+                {
+                    "type": "img",
+                    "data": "./loaded/caesar.jpg"
+                }
+            ]
+        },
+    "pickle_origin": {
+        "id": "pickle_origin",
+        "next": "",
+        "backend": "pickle_origin",
+        "scripts": [
+            ""
+        ],
+        "imports": ["pickle"],
+        "hints": [
+            {
+                "type": "txt",
+                "data": "Level _: Pickle jar."
+            },
+            {
+                "type": "img",
+                "data": "./loaded/pickle.jpg"
             }
         ]
     }
