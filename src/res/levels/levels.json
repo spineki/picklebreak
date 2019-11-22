@@ -177,5 +177,29 @@
                 "data": "./loaded/pickle.jpg"
             }
         ]
+    },
+    "the_key": {
+        "id": "the_key",
+        "next": "",
+        "backend": "the_key",
+        "scripts": [
+            "#The answer is simply: \"key\" ...",
+            "#... or maybe it is not that simple.",
+            "#Try to use the imports !",
+            "import hashlib",
+            "the_key = \"key\"",
+            ""
+        ],
+        "imports": [],
+        "hints": [
+            {
+                "type": "txt",
+                "data": "Level 15: The Key."
+            },
+            {
+                "type": "img",
+                "data": "./loaded/15_pic.jpg"
+            }
+        ]
     }
 }
