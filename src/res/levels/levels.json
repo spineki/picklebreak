@@ -166,7 +166,9 @@
         "scripts": [
             ""
         ],
-        "imports": ["pickle"],
+        "imports": [
+            "pickle"
+        ],
         "hints": [
             {
                 "type": "txt",
@@ -175,6 +177,27 @@
             {
                 "type": "img",
                 "data": "./loaded/pickle.jpg"
+            }
+        ]
+    },
+    "html1": {
+        "id": "html1",
+        "next": "",
+        "backend": "html1",
+        "scripts": [
+            "from http import client",
+            "h = client.HTTPConnection(\"{}:{}\")",
+            ""
+        ],
+        "imports": ["http.client"],
+        "hints": [
+            {
+                "type": "txt",
+                "data": "Level _: Tree."
+            },
+            {
+                "type": "img",
+                "data": "./loaded/html1.jpg"
             }
         ]
     }

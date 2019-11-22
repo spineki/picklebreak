@@ -8,7 +8,7 @@ LOADED_KEY = ""
 
 class HTTPRequestHandler (server.SimpleHTTPRequestHandler):
     
-    def do_GET (self, *args):
+    def do_GET (self):
         self.send_response(200)
         self.end_headers()
         self.wfile.write(bytes(LOADED_KEY, encoding = "UTF-8"))
