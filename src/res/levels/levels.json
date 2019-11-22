@@ -159,6 +159,27 @@
             }
         ]
     },
+    "caesar": {
+        "id": "caesar",
+        "next": "",
+        "backend": "caesar",
+        "scripts": [
+            "#This might be a great salad",
+            "this = \"{}\"",
+            ""
+            ],
+            "imports": [],
+            "hints": [
+                {
+                    "type": "txt",
+                    "data": "Level _: What a mess"
+                },
+                {
+                    "type": "img",
+                    "data": "./loaded/caesar.jpg"
+                }
+            ]
+        },
     "pickle_origin": {
         "id": "pickle_origin",
         "next": "",
@@ -186,8 +207,12 @@
             "#The answer is simply: \"key\" ...",
             "#... or maybe it is not that simple.",
             "#Try to use the imports !",
-            "import hashlib",
-            "the_key = \"key\"",
+            "from hashlib import sha256",
+            " ",
+            "def check(x):",
+            "    if x == sha256(b\"{}\").hexdigest()",
+            "        return True",
+            "    return False",
             ""
         ],
         "imports": [],
