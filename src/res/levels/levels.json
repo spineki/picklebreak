@@ -108,7 +108,7 @@
     },
     "3_reversed": {
         "id": "3_reversed",
-        "next": "",
+        "next": "caesar",
         "backend": "3_reversed",
         "scripts": [
             "# Reversed?",
@@ -128,7 +128,7 @@
     },
     "html0": {
         "id": "html0",
-        "next": "",
+        "next": "html1",
         "backend": "html0",
         "scripts": [
             "from http import client",
@@ -141,7 +141,7 @@
         "hints": [
             {
                 "type": "txt",
-                "data": "Level _: Basic web browser."
+                "data": "Level 6: Basic web browser."
             },
             {
                 "type": "img",
@@ -151,7 +151,7 @@
     },
     "image_encoded": {
         "id": "image_encode",
-        "next": "",
+        "next": "evil_prime",
         "backend": "image_encode",
         "scripts": [
             "# Something might be hiden in those pickles",
@@ -167,7 +167,7 @@
         "hints": [
             {
                 "type": "txt",
-                "data": "Level ?: Encoded image."
+                "data": "Level 8: Encoded image."
             },
             {
                 "type": "img",
@@ -181,7 +181,7 @@
     },
     "caesar": {
         "id": "caesar",
-        "next": "",
+        "next": "pickle_origin",
         "backend": "caesar",
         "scripts": [
             "#This might be a great salad",
@@ -192,7 +192,7 @@
             "hints": [
                 {
                     "type": "txt",
-                    "data": "Level _: What a mess"
+                    "data": "Level 4: What a mess"
                 },
                 {
                     "type": "img",
@@ -202,7 +202,7 @@
         },
     "pickle_origin": {
         "id": "pickle_origin",
-        "next": "",
+        "next": "html0",
         "backend": "pickle_origin",
         "scripts": [
             ""
@@ -213,7 +213,7 @@
         "hints": [
             {
                 "type": "txt",
-                "data": "Level _: Pickle jar."
+                "data": "Level 5: Pickle jar."
             },
             {
                 "type": "img",
@@ -223,7 +223,7 @@
     },
     "html1": {
         "id": "html1",
-        "next": "",
+        "next": "image_encode",
         "backend": "html1",
         "scripts": [
             "from http import client",
@@ -234,7 +234,7 @@
         "hints": [
             {
                 "type": "txt",
-                "data": "Level _: Tree."
+                "data": "Level 7: Tree."
             },
             {
                 "type": "img",
@@ -254,6 +254,10 @@
             ],
             "imports": [],
             "hints": [
+                {
+                    "type": "txt",
+                    "data": "Level 9: The beasted prime."
+                },
                 {
                     "type": "txt",
                     "data": "Try to divide the key by the evilest prime number"
