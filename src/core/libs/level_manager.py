@@ -135,7 +135,7 @@ class LevelFile():
     @staticmethod
     def write (level_name,level = None, backend_file = None, levels_file = LEVELS_FILE):
         """
-            Write a new level to the json. Creates an empty one if no args are passed
+            Write a new level to the json. Creates an empty one if only the name of the level is passed 
         """
 
         with open(levels_file, 'r') as f:
